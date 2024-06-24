@@ -7,25 +7,56 @@
     <title>Fighting Game</title>
   </head>
   <body>
-    
     <div class="centralizer">
-      <div class="container" id="container" style="border: 2px solid red">
-        <div class="centerDiv" id="centerDiv" style="border: 2px solid gold">
+      <div class="container" id="container">
+        <div class="centerDiv" id="centerDiv">
           <div class="dropdown">
-            <button class="dropdownButton" style="border: 1px solid darkblue">Change Arena</button>
-            <div class="dropdownContent" >
+            <button class="dropdownButton">Change Arena</button>
+            <div class="dropdownContent">
               <a href="#" id="arena1">Hell</a>
-              <a href="#" id="arena2">Link 2</a>
-              <a href="#" id="arena3">Link 3</a>
-              <a href="#" id="arenaDefault">Default</a>
+              <a href="#" id="arena2">Fight Ring</a>
+              <a href="#" id="arena3">Kingdom Streets</a>
+              <a href="#" id="arenaDefault">Fire & Ice</a>
             </div>
           </div>
-          <div class="ring" style="border: 2px solid green"></div>
+          <div id="randomFighterButton">Random Fighter</div>
+          <div class="ring">
+            <div id="leftDiv" class="playDiv">
+              <div id="cardDiv">
+                <div class="borderDiv">
+                  <img id="cardImgDiv" src="../server/fightgamedata/kogostemp.jpg">
+                  <div id="cardNameDiv">Templar Kogos</div>
+                  <div id="cardStatsDiv">
+                    <p class="statsDiv">Força</p>
+                    <p class="statsDiv">Inteligência</p>
+                    <p class="statsDiv">Velocidade</p>
+                    <p class="statsDiv">Altura</p>
+                    <p class="statsDiv">Peso</p>
+                    <p class="statsDiv">Poder de Manipulação</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="rightDiv" class="playDiv">
+              <div id="cardDiv">
+                <div class="borderDiv">
+                  <img id="cardImgDiv" src="../server/fightgamedata/lula.jpg">
+                  <div id="cardNameDiv">Demonic Lula</div>
+                  <div id="cardStatsDiv">
+                    <p class="statsDiv">Força</p>
+                    <p class="statsDiv">Inteligência</p>
+                    <p class="statsDiv">Velocidade</p>
+                    <p class="statsDiv">Altura</p>
+                    <p class="statsDiv">Peso</p>
+                    <p class="statsDiv">Poder de Manipulação</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-          
       </div>
     </div>
-
 
     <script src="script.js"></script>
   </body>

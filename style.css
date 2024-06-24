@@ -5,23 +5,24 @@
   }
 .container {
     display: flex;
-    align-items: center;
-    padding: 100px 0;
+    padding: 50px 0;
     margin-top: 100px;
 }
 .centerDiv {
     display: flex;
+    background-size: cover;
+    background-position: center;
     width: 100%;
+    height: 100%;
     margin: 100px 0;
 }
 .ring {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid red;
-    height: 600px;
+    justify-content: space-between;
+    height: 800px;
     width: 100%;
-    margin: 0 250px;
+    margin: 0 190px;
+    gap: 50px;
 }
 .dropdown {
     position: absolute;
@@ -29,7 +30,7 @@
     border: 2px solid red;
 }
 .dropdownButton {
-    font-size: 31.5px;
+    font-size: 22.5px;
     color: darkred;
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkred;
     background-color: black;
@@ -52,3 +53,48 @@
 .dropdownContent a:hover {background-color: darkblue}
 .dropdown:hover .dropdownContent {display: block}
 .dropdown:hover .dropdownButton {background-color: darkgreen}
+
+.playDiv {
+    display: flex;
+    width: 40%;
+}
+#cardDiv {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    border-radius: 25px;
+    background-color: black;
+    padding: 5%;
+}
+.borderDiv {
+    width: 100%;
+    color: white;
+    border: 4px solid white;
+    border-radius: 12px;
+}
+#cardImgDiv {
+    border-radius: 9px 9px 0 0;
+    width: 100%;
+    height: 50%;
+}
+#cardNameDiv {
+    padding: 7px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+}
+#cardStatsDiv {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: darkred;
+    border-radius: 0 0 9px 9px;
+}
+#cardStatsDiv p {
+    display: flex;
+    margin: 0;
+    padding: 6.8px;
+    border: 2px solid black;
+}
