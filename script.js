@@ -11,9 +11,6 @@ const rbButton = document.getElementById("randomBossButton")
 const nameDiv = document.getElementById("cardNameDiv")
 const nameDiv2 = document.getElementById("cardNameDiv2")
 const cardImgDiv = document.getElementById("cardImgDiv")
-const cardStatsDiv = document.getElementById("cardStatsDiv")
-
-
 
 
 function wall() {
@@ -56,30 +53,27 @@ arena4.addEventListener('click', changeArena4)
 arena5.addEventListener('click', changeArena5)
 arenaDefault.addEventListener('click', changeArenaDefault)
 
-const getRandomFighter = () => {
-    const randomNumber = Math.floor(Math.random() * 11)
-    searchFighter(randomNumber)
-} 
-function searchFighter (randomNumber) {
+// const getRandomFighter = () => {
+//     const randomNumber = Math.floor(Math.random() * 11)
+//     searchFighter(randomNumber)
+// } 
+function searchFighter () {
     fetch(`http://localhost:3000/data/`)
     .then((response) => response.json())
     .then((json) => {
-        console.log(json)
+        const multiplier = json.players.length;
+        const randomNumber = Math.floor(Math.random() * multiplier)
         const fighterData = json.players[randomNumber];
-        console.log("teste",fighterData)
         showFighterInfo (fighterData)
     })
     .catch (error => console.error("Deu erro carai:", error))
 }
-const getRandomBoss = () => {
-    const randomNumber = Math.floor(Math.random() * 11)
-    searchBoss(randomNumber)
-} 
-function searchBoss (randomNumber) {
+function searchBoss () {
     fetch(`http://localhost:3000/data/`)
     .then((response) => response.json())
     .then((json) => {
-        console.log(json)
+        const multiplier = json.boss.length;
+        const randomNumber = Math.floor(Math.random() * multiplier)
         const bossData = json.boss[randomNumber];
         showBossInfo (bossData)
     })
@@ -91,24 +85,17 @@ function showFighterInfo (fighter) {
     const img = `<img src="${imgSrc}" alt="${name}"/>`
     const classe = fighter.info.classe;
 
-    console.log(imgSrc, classe)
-
     nameDiv.innerHTML = name;
     cardImgDiv.innerHTML = img
-    console.log(name,classe)
 }
 function showBossInfo (boss) {
     const name = boss.info.name;
     const imgSrc = `http://localhost:3000${boss.info.img}`;
     const img = `<img src="${imgSrc}" alt="${name}"/>`
     const classe = boss.info.classe;
-
-    console.log(imgSrc, classe)
-
     nameDiv2.innerHTML = name;
     cardImgDiv2.innerHTML = img
-    console.log(name,classe)
 }
 
-rfButton.addEventListener("click", getRandomFighter)
-rbButton.addEventListener("click", getRandomBoss)
+rfButton.addEventListener("click", searchFighter)
+rbButton.addEventListener("click", searchBoss)
