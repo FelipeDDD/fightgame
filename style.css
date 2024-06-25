@@ -15,6 +15,7 @@
     width: 100%;
     height: 100%;
     margin: 100px 0;
+    border-radius: 40px;
 }
 .ring {
     display: flex;
@@ -27,7 +28,6 @@
 .dropdown {
     position: absolute;
     margin: 15px;
-    border: 2px solid red;
 }
 .dropdownButton {
     font-size: 22.5px;
@@ -44,16 +44,38 @@
     min-width: 100%;
 }
 .dropdownContent a {
-    color: red;
+    color: darkred;
     font-size: 25px;
     text-decoration: none;
     display: block;
     padding: 10px;
 }
-.dropdownContent a:hover {background-color: darkblue}
+.dropdownContent a:hover {background-color: darkred}
 .dropdown:hover .dropdownContent {display: block}
-.dropdown:hover .dropdownButton {background-color: darkgreen}
+.dropdown:hover .dropdownButton {background-color: brown}
 
+#randomFighterButton {
+    font-size: 20.5px;
+    color: darkred;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkred;
+    background-color: black;
+    padding: 7px;
+    cursor: pointer;
+    position: absolute;
+    margin: 341px 15px;
+    white-space: nowrap;
+}
+#randomBossButton {
+    font-size: 20.5px;
+    color: darkred;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkred;
+    background-color: black;
+    padding: 7px;
+    cursor: pointer;
+    position: absolute;
+    margin: 341px 1255px;
+    white-space: nowrap;
+}
 .playDiv {
     display: flex;
     width: 40%;
@@ -69,15 +91,19 @@
 .borderDiv {
     width: 100%;
     color: white;
-    border: 4px solid white;
+    border: 6px solid white;
     border-radius: 12px;
 }
-#cardImgDiv {
+#cardImgDiv, #cardImgDiv2 {
+    display: flex;
     border-radius: 9px 9px 0 0;
-    width: 100%;
     height: 50%;
 }
-#cardNameDiv {
+#cardImgDiv img, #cardImgDiv2 img {
+   width: 100%;
+   height: 100%;
+}
+#cardNameDiv, #cardNameDiv2 {
     padding: 7px;
     color: white;
     font-size: 30px;
@@ -85,16 +111,16 @@
     font-weight: bold;
     padding: 15px;
 }
-#cardStatsDiv {
+#cardStatsDiv, #cardStatsDiv2 {
     display: flex;
     flex-direction: column;
     font-size: 20px;
     background-color: darkred;
     border-radius: 0 0 9px 9px;
 }
-#cardStatsDiv p {
+#cardStatsDiv p, #cardStatsDiv2 p {
     display: flex;
     margin: 0;
-    padding: 6.8px;
+    padding: 7.2px;
     border: 2px solid black;
 }
