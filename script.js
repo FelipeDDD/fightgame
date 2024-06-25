@@ -8,6 +8,7 @@ const backgroundDiv = document.getElementById("container");
 const centerDiv = document.getElementById("centerDiv");
 const rfButton = document.getElementById("randomFighterButton");
 const rbButton = document.getElementById("randomBossButton");
+const fButton = document.getElementById("fightButton");
 const nameDiv = document.getElementById("cardNameDiv");
 const nameDiv2 = document.getElementById("cardNameDiv2");
 const cardImgDiv = document.getElementById("cardImgDiv");
@@ -111,10 +112,27 @@ function updateStatsBoss(stats) {
   document.getElementById("mStr2").textContent = stats.Manipulação;
 }
 
-
+function startBattle () {
+    searchFighter();
+    const hideStats = document.getElementById("rightDiv");
+    const classHunter = hideStats.querySelectorAll(".statValue");
+    
+    classHunter.forEach(stat => {
+        stat.style.visibility = "hidden";
+    })
+    setTimeout(() => {
+            classHunter.forEach(stat => {
+                    stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+                    stat.style.visibility = "visible";
+                });
+            }, 100);
+            searchBoss();
+          
+}
 
 
 
 
 rfButton.addEventListener("click", searchFighter);
 rbButton.addEventListener("click", searchBoss);
+fButton.addEventListener("click", startBattle);
