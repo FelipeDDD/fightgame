@@ -117,6 +117,7 @@
     font-size: 20px;
     background-color: darkred;
     border-radius: 0 0 9px 9px;
+    border: 3px solid black;
 }
 #cardStatsDiv p, #cardStatsDiv2 p {
     display: flex;
