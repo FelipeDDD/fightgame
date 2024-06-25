@@ -89,7 +89,7 @@ function showBossInfo(boss) {
   const imgSrc = `http://localhost:3000${boss.info.img}`;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
   const classe = boss.info.classe;
-  
+
   nameDiv2.innerHTML = name;
   cardImgDiv2.innerHTML = img;
   updateStatsBoss(boss.stats);
@@ -110,6 +110,11 @@ function updateStatsBoss(stats) {
   document.getElementById("wgt2").textContent = stats.Peso;
   document.getElementById("mStr2").textContent = stats.Manipulação;
 }
+
+
+
+
+
 
 rfButton.addEventListener("click", searchFighter);
 rbButton.addEventListener("click", searchBoss);

@@ -5,8 +5,9 @@
   }
 .container {
     display: flex;
-    padding: 50px 0;
     margin-top: 100px;
+    flex-direction: column;
+    
 }
 .centerDiv {
     display: flex;
@@ -14,7 +15,7 @@
     background-position: center;
     width: 100%;
     height: 100%;
-    margin: 100px 0;
+   
     border-radius: 40px;
 }
 .ring {
@@ -128,4 +129,32 @@
 }
 .statValue {
     margin-right: 20px;
+}
+.topDiv {
+    display: flex;
+    height: 180px;
+    justify-content: center;
+    align-items: end;
+    gap: 290px;
+    border: 2px solid blue;
+}
+.hpBar {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+}
+.heart {
+    background: url("/walls/heart.png") no-repeat center center;
+    font-size: 50px;
+    height: 80px;
+    width: 80px;
+    background-size: cover;
+    filter: contrast(3);
+}
+.blackheart {
+    background: url("/walls/blackheart.png") no-repeat center center;
+    font-size: 50px;
+    height: 80px;
+    width: 80px;
+    background-size: cover;
 }
