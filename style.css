@@ -50,9 +50,9 @@
     display: block;
     padding: 10px;
 }
-.dropdownContent a:hover {background-color: darkred}
+.dropdownContent a:hover {background-color: white}
 .dropdown:hover .dropdownContent {display: block}
-.dropdown:hover .dropdownButton {background-color: brown}
+.dropdown:hover .dropdownButton {background-color: white}
 
 #randomFighterButton {
     font-size: 20.5px;
@@ -121,7 +121,11 @@
 }
 .statsDiv p {
     display: flex;
+    justify-content: space-between;
     margin: 0;
     padding: 7.2px;
     border: 2px solid black;
+}
+.statValue {
+    margin-right: 20px;
 }
