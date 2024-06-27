@@ -9,18 +9,48 @@ const centerDiv = document.getElementById("centerDiv");
 const rfButton = document.getElementById("randomFighterButton");
 const rbButton = document.getElementById("randomBossButton");
 const fButton = document.getElementById("fightButton");
+const rButton = document.getElementById("restartButton");
+const gsButton = document.getElementById("randomStatsButton");
+const creditsValue = document.getElementById("credits");
 const nameDiv = document.getElementById("cardNameDiv");
 const nameDiv2 = document.getElementById("cardNameDiv2");
 const cardImgDiv = document.getElementById("cardImgDiv");
+
+const str = document.getElementById("str");
+const int = document.getElementById("int");
+const spd =  document.getElementById("spd");
+const hei =  document.getElementById("hei");
+const wgt =  document.getElementById("wgt");
+const mStr =  document.getElementById("mStr");
+const str2 = document.getElementById("str2");
+const int2 = document.getElementById("int2");
+const spd2 =  document.getElementById("spd2");
+const hei2 =  document.getElementById("hei2");
+const wgt2 =  document.getElementById("wgt2");
+const mStr2 =  document.getElementById("mStr2");
+
+rfButton.addEventListener("click", searchFighter);
+rbButton.addEventListener("click", searchBoss);
+fButton.addEventListener("click", startBattle);
+rButton.addEventListener("click", restartBattle);
+gsButton.addEventListener("click", statsRandomizer);
+
+let credits = 0;
+let fighterHP = 0;
+let enemyHP = 0;
 
 function wall() {
   centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
   document.body.style.backgroundImage = "url(walls/arenaDback.jpg)";
   document.body.style.backgroundColor = "rgba(255, 255, 255, 0";
-  document.body.style.backgroundBlendMode = "overlay";
+  document.body.style.backgroundBlrestartMode = "overlay";
   document.body.style.backgroundSize = "cover";
 }
-wall();
+
+window.onload = () => {
+  wall();
+  updateCredits(credits = 0);
+}
 
 function changeArena1() {
   centerDiv.style.backgroundImage = "url(walls/arena1back.jpg)";
@@ -79,12 +109,19 @@ function showFighterInfo(fighter) {
   const name = fighter.info.name;
   const imgSrc = `http://localhost:3000${fighter.info.img}`;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
-  const classe = fighter.info.classe;
-
+//   const classe = fighter.info.classe;
+  
   nameDiv.innerHTML = name;
   cardImgDiv.innerHTML = img;
   updateStatsFighter(fighter.stats);
+  
+  if (credits <= 0 ) {
+    rfButton.disabled = true;
+    rfButton.style.opacity = 0.8;
+    updateCredits(credits = 0)
 }
+}
+
 function showBossInfo(boss) {
   const name = boss.info.name;
   const imgSrc = `http://localhost:3000${boss.info.img}`;
@@ -96,12 +133,16 @@ function showBossInfo(boss) {
   updateStatsBoss(boss.stats);
 }
 function updateStatsFighter(stats) {
-  document.getElementById("str").textContent = stats.Força;
-  document.getElementById("int").textContent = stats.Inteligência;
-  document.getElementById("spd").textContent = stats.Velocidade;
-  document.getElementById("hei").textContent = stats.Altura;
-  document.getElementById("wgt").textContent = stats.Peso;
-  document.getElementById("mStr").textContent = stats.Manipulação;
+  gsButton.disabled = false;
+  gsButton.style.opacity = 1;
+  gsButton.textContent = gsButton.getAttribute("data-original-text");
+
+  str.textContent = stats.Força;
+  int.textContent = stats.Inteligência;
+  spd.textContent = stats.Velocidade;
+  hei.textContent = stats.Altura;
+  wgt.textContent = stats.Peso;
+  mStr.textContent = stats.Manipulação;
 }
 function updateStatsBoss(stats) {
   document.getElementById("str2").textContent = stats.Força;
@@ -116,7 +157,6 @@ function startBattle () {
     searchFighter();
     const hideStats = document.getElementById("rightDiv");
     const classHunter = hideStats.querySelectorAll(".statValue");
-    
     classHunter.forEach(stat => {
         stat.style.visibility = "hidden";
     })
@@ -127,12 +167,26 @@ function startBattle () {
                 });
             }, 100);
             searchBoss();
-          
+    
+    updateCredits(11)
+   
 }
+function restartBattle () {
+    location.reload()
+}
+function updateCredits (newCredits) {
+  credits = newCredits;
+  creditsValue.textContent = newCredits;
+  }
 
+function statsRandomizer (classe) {
+    
+    str.textContent = parseInt(str.textContent) + Math.floor(Math.random() * 100) + 1;
+    int.textContent = parseInt(int.textContent) + Math.floor(Math.random() * 100) + 1;
+    spd.textContent = parseInt(spd.textContent) + Math.floor(Math.random() * 100) + 1;
+    mStr.textContent = parseInt(mStr.textContent) + Math.floor(Math.random() * 100) + 1;
 
-
-
-rfButton.addEventListener("click", searchFighter);
-rbButton.addEventListener("click", searchBoss);
-fButton.addEventListener("click", startBattle);
+    gsButton.disabled = true;
+    gsButton.textContent = 'Bonus Applied';
+    gsButton.style.opacity = 0.8;
+}
