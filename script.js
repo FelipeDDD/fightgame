@@ -1,3 +1,4 @@
+const hButton = document.getElementById("hiddenButton");
 const arenaDefault = document.getElementById("arenaDefault");
 const arena1 = document.getElementById("arena1");
 const arena2 = document.getElementById("arena2");
@@ -34,6 +35,7 @@ fButton.addEventListener("click", startBattle);
 rButton.addEventListener("click", restartBattle);
 rfButton.addEventListener("click", searchFighter);
 gsButton.addEventListener("click", generateStats);
+hButton.addEventListener("click", hiddenButton)
 
 let gameOn = false;
 let credits = 0;
@@ -56,6 +58,9 @@ window.onload = () => {
   gameOn = false;
 };
 
+function hiddenButton() {
+  rbButton.style.display = "block";
+}
 function changeArena1() {
   centerDiv.style.backgroundImage = "url(walls/arena1back.jpg)";
   document.body.style.backgroundImage = "url(walls/hell.jpg)";
@@ -160,7 +165,7 @@ function updateStatsBoss(stats) {
   document.getElementById("str2").textContent = stats.Raiva;
   document.getElementById("int2").textContent = stats.Inteligência;
   document.getElementById("spd2").textContent = stats.Velocidade;
-  document.getElementById("hei2").textContent = stats.Altura;
+  document.getElementById("hei2").textContent = stats.Altura.toFixed(2);
   document.getElementById("wgt2").textContent = stats.Peso;
   document.getElementById("mStr2").textContent = stats.Manipulação;
 }
@@ -201,7 +206,7 @@ function generateStats() {
   function rollDice() {
     return Math.floor(Math.random() * 11) + 5;
   }
-  updateCredits(credits - 2);
+  updateCredits(credits - 1);
 
   if (credits <= 0) {
     rfButton.disabled = true;
@@ -245,7 +250,8 @@ function generateStats() {
 }
 
 function clicksEnable() {
-  const statItems = document.querySelectorAll(".statItem");
+  const hideStats = document.getElementById("leftDiv");
+  const statItems = hideStats.querySelectorAll(".statItem");
   statItems.forEach((statItem) => {
     statItem.addEventListener("click", handleClick);
     statItem.classList.add("clickable");
