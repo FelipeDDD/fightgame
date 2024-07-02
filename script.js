@@ -87,6 +87,7 @@ arena4.addEventListener("click", changeArena4);
 arena5.addEventListener("click", changeArena5);
 arenaDefault.addEventListener("click", changeArenaDefault);
 
+
 function searchFighter() {
   fetch(`http://localhost:3000/data/`)
     .then((response) => response.json())
@@ -94,6 +95,8 @@ function searchFighter() {
       const multiplier = json.players.length;
       const randomNumber = Math.floor(Math.random() * multiplier);
       const fighterData = json.players[randomNumber];
+      // Ordena os stats para o sugerido
+      
       showFighterInfo(fighterData);
     })
     .catch((error) => console.error("Deu erro carai:", error));
@@ -142,14 +145,14 @@ function showBossInfo(boss) {
   updateStatsBoss(boss.stats);
 }
 function updateStatsFighter(stats) {
-  gsButton.disabled = false;
-  gsButton.style.opacity = 1;
+  // gsButton.disabled = false;
+  // gsButton.style.opacity = 1;
   // gsButton.textContent = gsButton.getAttribute("data-original-text");
 
   str.textContent = stats.Raiva;
   int.textContent = stats.Inteligência;
   spd.textContent = stats.Velocidade;
-  hei.textContent = stats.Altura;
+  hei.textContent = stats.Altura.toFixed(2)
   wgt.textContent = stats.Peso;
   mStr.textContent = stats.Manipulação;
 }
@@ -187,6 +190,8 @@ function startBattle() {
 function restartBattle() {
   location.reload();
   gameOn = false;
+  gsButton.disabled = false;
+  gsButton.style.opacity = 1;
 }
 function updateCredits(newCredits) {
   credits = newCredits;
@@ -196,12 +201,12 @@ function generateStats() {
   function rollDice() {
     return Math.floor(Math.random() * 11) + 5;
   }
-  updateCredits(credits - 1);
+  updateCredits(credits - 2);
 
   if (credits <= 0) {
     rfButton.disabled = true;
     rfButton.style.opacity = 0.8;
-    gsButton.textContent = 'Not enough Credits';
+    // gsButton.textContent = 'Not enough Credits';
     gsButton.disabled = true;
     gsButton.style.opacity = 0.8;
     updateCredits((credits = 0));
@@ -210,33 +215,33 @@ function generateStats() {
   //   "Raiva",
   //   "Inteligência",
   //   "Velocidade",
-  //   "Manipulação",
   //   "Altura",
   //   "Peso",
+  //   "Manipulação",
   // ];
   const statNames = Object.keys(currentPlayerData.stats);
   const randomStatIndex = Math.floor(Math.random() * statNames.length);
   // const randomStat = stats[randomStatIndex];
   const randomStat = statNames[randomStatIndex];
-  console.log(currentPlayerData.stats)
+  console.log(randomStatIndex)
+  console.log(currentPlayerData)
 
   const increment = rollDice();
-  // console.log("T2-DICE IS", increment);
+  console.log("T2-DICE IS", increment);
   // console.log("T0", currentPlayerData.stats)
-  if (randomStatIndex <= 3) {
-    currentPlayerData.stats[randomStat] += increment;
-    console.log(`T3 - Incrementando ${randomStat} em ${increment}`);
-
+  if (randomStatIndex == 3) {
+    currentPlayerData.stats[randomStat] += (increment * 0.02);
+    console.log(`T3 - Incrementando ${randomStat} em ${increment * 0.02}`);
+  } else if (randomStatIndex == 4) {
+    currentPlayerData.stats[randomStat] += (increment * 2);
+    console.log(`T4 Incrementando ${randomStat} em ${increment * 2}`);
   } else {
-    currentPlayerData.stats[randomStat] += increment * 2;
-    console.log(`T4 Incrementando ${randomStat} em ${increment}`);
+    currentPlayerData.stats[randomStat] += increment;
+    console.log(`T5 Incrementando ${randomStat} em ${increment}`);
   }
-  console.log("T0FINAL", currentPlayerData.stats)
+
   updateStatsFighter(currentPlayerData.stats)
- 
-  // gsButton.disabled = true;
-  // gsButton.textContent = 'Bonus Applied';
-  // gsButton.style.opacity = 0.8;
+
 }
 
 function clicksEnable() {
