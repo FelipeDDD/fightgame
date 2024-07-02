@@ -161,22 +161,20 @@
     padding: 13px;
 }
 .statsDiv {
-    display: flex;
-    flex-direction: column;
     font-size: 20px;
     background-color: darkred;
     border-radius: 0 0 9px 9px;
     border: 3px solid black;
 }
-.statsDiv p {
+.statsDiv p, .statItem {
     display: flex;
     justify-content: space-between;
     margin: 0;
     padding: 7.2px;
     border: 2px solid black;
 }
-.statValue {
-    margin-right: 20px;
+.statValue, .statValue2 {
+    margin-right: 15px;
 }
 .topDiv {
     display: flex;
@@ -221,4 +219,10 @@
         transform: scale(1) translateY(0);
         opacity: 1;
     }
+}
+.statItem.clickable {
+    cursor: pointer;
+}
+.statItem.clickable:hover {
+    background-color: #ff1a1a;
 }

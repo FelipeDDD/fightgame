@@ -18,26 +18,29 @@ const cardImgDiv = document.getElementById("cardImgDiv");
 
 const str = document.getElementById("str");
 const int = document.getElementById("int");
-const spd =  document.getElementById("spd");
-const hei =  document.getElementById("hei");
-const wgt =  document.getElementById("wgt");
-const mStr =  document.getElementById("mStr");
+const spd = document.getElementById("spd");
+const hei = document.getElementById("hei");
+const wgt = document.getElementById("wgt");
+const mStr = document.getElementById("mStr");
 const str2 = document.getElementById("str2");
 const int2 = document.getElementById("int2");
-const spd2 =  document.getElementById("spd2");
-const hei2 =  document.getElementById("hei2");
-const wgt2 =  document.getElementById("wgt2");
-const mStr2 =  document.getElementById("mStr2");
+const spd2 = document.getElementById("spd2");
+const hei2 = document.getElementById("hei2");
+const wgt2 = document.getElementById("wgt2");
+const mStr2 = document.getElementById("mStr2");
 
-rfButton.addEventListener("click", searchFighter);
 rbButton.addEventListener("click", searchBoss);
 fButton.addEventListener("click", startBattle);
 rButton.addEventListener("click", restartBattle);
-gsButton.addEventListener("click", statsRandomizer);
+rfButton.addEventListener("click", searchFighter);
+gsButton.addEventListener("click", generateStats);
 
+let gameOn = false;
 let credits = 0;
 let fighterHP = 0;
 let enemyHP = 0;
+let currentBossData = null;
+let currentPlayerData = null;
 
 function wall() {
   centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
@@ -49,8 +52,9 @@ function wall() {
 
 window.onload = () => {
   wall();
-  updateCredits(credits = 0);
-}
+  updateCredits((credits = 0));
+  gameOn = false;
+};
 
 function changeArena1() {
   centerDiv.style.backgroundImage = "url(walls/arena1back.jpg)";
@@ -109,17 +113,21 @@ function showFighterInfo(fighter) {
   const name = fighter.info.name;
   const imgSrc = `http://localhost:3000${fighter.info.img}`;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
-//   const classe = fighter.info.classe;
-  
+  //   const classe = fighter.info.classe;
+
   nameDiv.innerHTML = name;
   cardImgDiv.innerHTML = img;
   updateStatsFighter(fighter.stats);
-  
-  if (credits <= 0 ) {
+  currentPlayerData = fighter;
+  updateCredits(credits - 1)
+
+  if (credits <= 0) {
     rfButton.disabled = true;
     rfButton.style.opacity = 0.8;
-    updateCredits(credits = 0)
-}
+    updateCredits((credits = 0));
+    gsButton.disabled = true;
+    gsButton.style.opacity = 0.8;
+  }
 }
 
 function showBossInfo(boss) {
@@ -128,6 +136,7 @@ function showBossInfo(boss) {
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
   const classe = boss.info.classe;
 
+  currentBossData = boss;
   nameDiv2.innerHTML = name;
   cardImgDiv2.innerHTML = img;
   updateStatsBoss(boss.stats);
@@ -135,9 +144,9 @@ function showBossInfo(boss) {
 function updateStatsFighter(stats) {
   gsButton.disabled = false;
   gsButton.style.opacity = 1;
-  gsButton.textContent = gsButton.getAttribute("data-original-text");
+  // gsButton.textContent = gsButton.getAttribute("data-original-text");
 
-  str.textContent = stats.Força;
+  str.textContent = stats.Raiva;
   int.textContent = stats.Inteligência;
   spd.textContent = stats.Velocidade;
   hei.textContent = stats.Altura;
@@ -145,7 +154,7 @@ function updateStatsFighter(stats) {
   mStr.textContent = stats.Manipulação;
 }
 function updateStatsBoss(stats) {
-  document.getElementById("str2").textContent = stats.Força;
+  document.getElementById("str2").textContent = stats.Raiva;
   document.getElementById("int2").textContent = stats.Inteligência;
   document.getElementById("spd2").textContent = stats.Velocidade;
   document.getElementById("hei2").textContent = stats.Altura;
@@ -153,40 +162,130 @@ function updateStatsBoss(stats) {
   document.getElementById("mStr2").textContent = stats.Manipulação;
 }
 
-function startBattle () {
-    searchFighter();
-    const hideStats = document.getElementById("rightDiv");
-    const classHunter = hideStats.querySelectorAll(".statValue");
-    classHunter.forEach(stat => {
-        stat.style.visibility = "hidden";
-    })
-    setTimeout(() => {
-            classHunter.forEach(stat => {
-                    stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
-                    stat.style.visibility = "visible";
-                });
-            }, 100);
-            searchBoss();
-    
-    updateCredits(11)
-   
+function startBattle() {
+  searchFighter();
+  gameOn = true;
+  rfButton.disabled = false;
+  rfButton.style.opacity = 1;
+
+  const hideStats = document.getElementById("rightDiv");
+  const classHunter = hideStats.querySelectorAll(".statValue");
+  classHunter.forEach((stat) => {
+    stat.style.visibility = "hidden";
+  });
+  setTimeout(() => {
+    classHunter.forEach((stat) => {
+      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.style.visibility = "visible";
+    });
+  }, 100);
+
+  searchBoss();
+  updateCredits(11);
+  clicksEnable();
 }
-function restartBattle () {
-    location.reload()
+function restartBattle() {
+  location.reload();
+  gameOn = false;
 }
-function updateCredits (newCredits) {
+function updateCredits(newCredits) {
   credits = newCredits;
   creditsValue.textContent = newCredits;
-  }
-
-function statsRandomizer (classe) {
-    
-    str.textContent = parseInt(str.textContent) + Math.floor(Math.random() * 100) + 1;
-    int.textContent = parseInt(int.textContent) + Math.floor(Math.random() * 100) + 1;
-    spd.textContent = parseInt(spd.textContent) + Math.floor(Math.random() * 100) + 1;
-    mStr.textContent = parseInt(mStr.textContent) + Math.floor(Math.random() * 100) + 1;
-
-    gsButton.disabled = true;
-    gsButton.textContent = 'Bonus Applied';
-    gsButton.style.opacity = 0.8;
 }
+function generateStats() {
+  function rollDice() {
+    return Math.floor(Math.random() * 11) + 5;
+  }
+  updateCredits(credits - 1);
+
+  if (credits <= 0) {
+    rfButton.disabled = true;
+    rfButton.style.opacity = 0.8;
+    gsButton.textContent = 'Not enough Credits';
+    gsButton.disabled = true;
+    gsButton.style.opacity = 0.8;
+    updateCredits((credits = 0));
+  }
+  // const stats = [
+  //   "Raiva",
+  //   "Inteligência",
+  //   "Velocidade",
+  //   "Manipulação",
+  //   "Altura",
+  //   "Peso",
+  // ];
+  const statNames = Object.keys(currentPlayerData.stats);
+  const randomStatIndex = Math.floor(Math.random() * statNames.length);
+  // const randomStat = stats[randomStatIndex];
+  const randomStat = statNames[randomStatIndex];
+  console.log(currentPlayerData.stats)
+
+  const increment = rollDice();
+  // console.log("T2-DICE IS", increment);
+  // console.log("T0", currentPlayerData.stats)
+  if (randomStatIndex <= 3) {
+    currentPlayerData.stats[randomStat] += increment;
+    console.log(`T3 - Incrementando ${randomStat} em ${increment}`);
+
+  } else {
+    currentPlayerData.stats[randomStat] += increment * 2;
+    console.log(`T4 Incrementando ${randomStat} em ${increment}`);
+  }
+  console.log("T0FINAL", currentPlayerData.stats)
+  updateStatsFighter(currentPlayerData.stats)
+ 
+  // gsButton.disabled = true;
+  // gsButton.textContent = 'Bonus Applied';
+  // gsButton.style.opacity = 0.8;
+}
+
+function clicksEnable() {
+  const statItems = document.querySelectorAll(".statItem");
+  statItems.forEach((statItem) => {
+    statItem.addEventListener("click", handleClick);
+    statItem.classList.add("clickable");
+  });
+}
+function handleClick(event) {
+  const statItem = event.currentTarget;
+  const statName = event.target.querySelector(".statName").textContent;
+  const statValue = statItem.querySelector(".statValue");
+  const playerValue = Number(statValue.textContent);
+  
+
+    if (currentBossData && currentBossData.stats) {
+      const bossValue = currentBossData.stats[statName];
+
+
+      if (bossValue !== undefined) {
+        console.log(`Comparando ${statName}:`);
+        console.log(`Jogador: ${playerValue}`);
+        console.log(`Boss: ${bossValue}`);
+
+        // Stats do inimigo visíveis!
+       updateStatsBoss(currentBossData.stats)
+
+        if (playerValue > bossValue) {
+          console.log(`${statName}: Player wins!`);
+        } else if (playerValue < bossValue) {
+          console.log(`${statName}: Enemy wins!`);
+        } else {
+          console.log(`${statName}: It's a draw!`);
+        }
+      } else {
+        console.log(`Stat ${statName} not found for Enemy`);
+      }
+    } else {
+      console.log("Data not found or invalid for the Enemy");
+    }
+}
+// Remover detalhes antes do Start Battle
+document.addEventListener("DOMContentLoaded", () => {
+  const statValues = document.querySelectorAll(".statItem");
+  statValues.forEach((statItem) => {
+    statItem.classList.remove("clickable");
+    statItem.querySelector(".statValue").innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+  });
+});
+
+
