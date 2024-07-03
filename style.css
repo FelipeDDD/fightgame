@@ -15,8 +15,10 @@
     background-position: center;
     width: 100%;
     height: 100%;
-   
+    /* border: 2px solid gold; */
     border-radius: 40px;
+    flex-direction: row;
+    padding: 15px;
 }
 .ring {
     display: flex;
@@ -88,6 +90,19 @@
     align-items: center;
     padding-top: 180px;
     gap: 20px;
+}
+#gameTextDiv {
+    font-size: 45px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: black;
+    height: 80px;
+    width: 1040px;
+    margin-top: 520px;
+    position: absolute;
+    border-radius: 25px;
+    /* border: 2px solid yellow; */
 }
 #fightButton {
     display: flex;
@@ -207,7 +222,8 @@
 .hpBar {
     display: flex;
     width: 350px;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 35px;
 }
 .heart {
     background: url("/walls/heart.png") no-repeat center center;

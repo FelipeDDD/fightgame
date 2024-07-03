@@ -16,6 +16,7 @@ const creditsValue = document.getElementById("credits");
 const nameDiv = document.getElementById("cardNameDiv");
 const nameDiv2 = document.getElementById("cardNameDiv2");
 const cardImgDiv = document.getElementById("cardImgDiv");
+const gameTextDiv = document.getElementById("gameTextDiv");
 
 const str = document.getElementById("str");
 const int = document.getElementById("int");
@@ -39,10 +40,11 @@ hButton.addEventListener("click", hiddenButton)
 
 let gameOn = false;
 let credits = 0;
-let fighterHP = 0;
-let enemyHP = 0;
+let fighterHP = 3;
+let enemyHP = 3;
 let currentBossData = null;
 let currentPlayerData = null;
+let availableStats = ["Força", "Inteligência", "Velocidade", "Altura", "Peso", "Manipulação"];
 
 function wall() {
   centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
@@ -57,6 +59,14 @@ window.onload = () => {
   updateCredits((credits = 0));
   gameOn = false;
 };
+// Remover detalhes antes do Start Battle
+document.addEventListener("DOMContentLoaded", () => {
+  const statValues = document.querySelectorAll(".statItem");
+  statValues.forEach((statItem) => {
+    statItem.classList.remove("clickable");
+    statItem.querySelector(".statValue").innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+  });
+});
 
 function hiddenButton() {
   rbButton.style.display = "block";
@@ -173,8 +183,16 @@ function updateStatsBoss(stats) {
 function startBattle() {
   searchFighter();
   gameOn = true;
+
+  fighterHP = 3;
+  enemyHP = 3;
+
   rfButton.disabled = false;
   rfButton.style.opacity = 1;
+  fButton.disabled = true;
+  fButton.style.opacity = 0.2;
+  gsButton.disabled = false;
+  gsButton.style.opacity = 1;
 
   const hideStats = document.getElementById("rightDiv");
   const classHunter = hideStats.querySelectorAll(".statValue");
@@ -195,8 +213,14 @@ function startBattle() {
 function restartBattle() {
   location.reload();
   gameOn = false;
+  fighterHP = 0;
+  enemyHP = 0;
+
   gsButton.disabled = false;
   gsButton.style.opacity = 1;
+
+  fButton.disabled = false;
+  fButton.style.opacity = 1;
 }
 function updateCredits(newCredits) {
   credits = newCredits;
@@ -228,30 +252,34 @@ function generateStats() {
   const randomStatIndex = Math.floor(Math.random() * statNames.length);
   // const randomStat = stats[randomStatIndex];
   const randomStat = statNames[randomStatIndex];
-  console.log(randomStatIndex)
-  console.log(currentPlayerData)
+  // console.log(randomStatIndex)
+  // console.log(currentPlayerData)
 
   const increment = rollDice();
-  console.log("T2-DICE IS", increment);
+  // console.log("T2-DICE IS", increment);
   // console.log("T0", currentPlayerData.stats)
   if (randomStatIndex == 3) {
     currentPlayerData.stats[randomStat] += (increment * 0.02);
     console.log(`T3 - Incrementando ${randomStat} em ${increment * 0.02}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment *0.02}`;
   } else if (randomStatIndex == 4) {
     currentPlayerData.stats[randomStat] += (increment * 2);
     console.log(`T4 Incrementando ${randomStat} em ${increment * 2}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment * 2}`;
   } else {
     currentPlayerData.stats[randomStat] += increment;
     console.log(`T5 Incrementando ${randomStat} em ${increment}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment}`;
+    
   }
 
   updateStatsFighter(currentPlayerData.stats)
-
 }
 
 function clicksEnable() {
   const hideStats = document.getElementById("leftDiv");
   const statItems = hideStats.querySelectorAll(".statItem");
+
   statItems.forEach((statItem) => {
     statItem.addEventListener("click", handleClick);
     statItem.classList.add("clickable");
@@ -263,6 +291,7 @@ function handleClick(event) {
   const statValue = statItem.querySelector(".statValue");
   const playerValue = Number(statValue.textContent);
   
+ 
 
     if (currentBossData && currentBossData.stats) {
       const bossValue = currentBossData.stats[statName];
@@ -278,10 +307,21 @@ function handleClick(event) {
 
         if (playerValue > bossValue) {
           console.log(`${statName}: Player wins!`);
+          gameTextDiv.textContent = `${statName}: Player wins!`
+          availableStats = availableStats.filter(stat => stat !== statName)
+          console.log(availableStats)
+          enemyHP -= 1;
+          updateHP()
         } else if (playerValue < bossValue) {
           console.log(`${statName}: Enemy wins!`);
+          gameTextDiv.textContent = `${statName}: Enemy wins!`
+          availableStats = availableStats.filter(stat => stat !== statName)
+          console.log(availableStats)
+          fighterHP -= 1;
+          updateHP()
         } else {
           console.log(`${statName}: It's a draw!`);
+          gameTextDiv.textContent = `${statName}: It's a draw! :O`
         }
       } else {
         console.log(`Stat ${statName} not found for Enemy`);
@@ -289,14 +329,124 @@ function handleClick(event) {
     } else {
       console.log("Data not found or invalid for the Enemy");
     }
-}
-// Remover detalhes antes do Start Battle
-document.addEventListener("DOMContentLoaded", () => {
-  const statValues = document.querySelectorAll(".statItem");
-  statValues.forEach((statItem) => {
-    statItem.classList.remove("clickable");
-    statItem.querySelector(".statValue").innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
-  });
-});
 
+    const statItemsAll = document.querySelectorAll(".statItem");
+    statItemsAll.forEach(item => {
+      const statNameAll = item.querySelector(".statName").textContent;
+      if (statNameAll === statName) {
+        item.removeEventListener("click", handleClick);
+        item.classList.remove("clickable");
+        item.style.backgroundColor = "#330a00";
+      }
+    })
+    
+    
+
+    
+    // setTimeout(gameTextDiv.textContent = "Enemy will play next", enemyTurn, 3000)
+    setTimeout(enemyTurn, 3000)
+}
+
+function updateHP() {
+  HP = fighterHP
+  EHP = enemyHP
+
+
+  if (HP === 3) {
+  } else if (HP === 2) {
+    document.getElementById("h3").style.display = "none";
+    gameTextDiv.textContent = `Você ainda tem  2 vidas!`
+  } else if (HP === 1) {
+    document.getElementById("h2").style.display = "none";
+    gameTextDiv.textContent = `Cuidado, você tem apenas 1 vida!`
+  } else if (HP === 0) {
+    document.getElementById("h1").style.display = "none";
+    gameTextDiv.textContent = `Morreu, otário!`
+  } else {
+    console.log("ERRO IF 'HP'")
+  }
+
+
+  if (EHP === 3) {
+  } else if (EHP === 2) {
+    document.getElementById("bh3").style.display = "none";
+  } else if (EHP === 1) {
+    document.getElementById("bh2").style.display = "none";
+  } else if (EHP ===0) {
+    document.getElementById("bh1").style.display = "none";
+    gameTextDiv.textContent = `O inimigo suicidou-se, parabuains!`
+  } else {
+    console.log("ERRO IF 'EHP'")
+  }
+  console.log("HP3", HP,EHP)
+}
+function enemyTurn() {
+  const randomStat = Math.floor(Math.random() * availableStats.length);
+  const chosenStat = availableStats[randomStat];
+
+  console.log (chosenStat)
+
+  availableStats = availableStats.filter(stat => stat !== chosenStat)
+
+  const playerValue = currentPlayerData.stats[chosenStat];
+  const enemyValue = currentBossData.stats[chosenStat];
+
+  console.log(`Enemy chose: ${chosenStat}`)
+  console.log(`You: ${playerValue}`)
+  console.log(`Enemy: ${enemyValue}`)
+
+
+  if (playerValue > enemyValue) {
+    console.log(`${chosenStat}: Player wins!`);
+    gameTextDiv.textContent = `${chosenStat}: Player wins!`
+    availableStats = availableStats.filter(stat => stat !== chosenStat)
+   
+    enemyHP -= 1;
+    updateHP()
+  } else if (playerValue < enemyValue) {
+    console.log(`${chosenStat}: Enemy wins!`);
+    gameTextDiv.textContent = `${chosenStat}: Enemy wins!`
+    availableStats = availableStats.filter(stat => stat !== chosenStat)
+  
+    fighterHP -= 1;
+    updateHP()
+  } else {
+    console.log(`${chosenStat}: It's a draw!`);
+    gameTextDiv.textContent = `${chosenStat}: It's a draw! :O`
+  }
+  console.log(chosenStat)
+  updateHP();
+
+  // const hideStats = document.getElementById("rightDiv");
+  // const statItems = hideStats.querySelectorAll(".statItem");
+  // const hideStats2 = document.getElementById("leftDiv");
+  // const statItems2 = hideStats2.querySelectorAll(".statItem");
+
+  // statItems.forEach(statItem => {
+  //   const statName = statItem.querySelector(".statName").textContent;
+  //   if (statName === chosenStat) {
+  //     statItem.classList.remove("clickable");
+  //     statItem.removeEventListener("click", handleClick);
+  //     statItem.style.backgroundColor = "#330a00";
+  //   }
+  //   })
+  
+  //   statItems2.forEach(statItem => {
+  //     const statName2 = statItem.querySelector(".statName").textContent;
+  //     if (statName2 === chosenStat) {
+  //       statItem.classList.remove("clickable");
+  //       statItem.removeEventListener("click", handleClick);
+  //       statItem.style.backgroundColor = "#330a00";
+  //     }
+  // });
+  const statItemsAll = document.querySelectorAll(".statItem");
+    statItemsAll.forEach(item => {
+      const statNameAll = item.querySelector(".statName").textContent;
+      if (statNameAll === chosenStat) {
+        item.removeEventListener("click", handleClick);
+        item.classList.remove("clickable");
+        item.style.backgroundColor = "#330a00";
+      }
+    })
+}
 
