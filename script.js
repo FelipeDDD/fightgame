@@ -39,12 +39,13 @@ gsButton.addEventListener("click", generateStats);
 hButton.addEventListener("click", hiddenButton)
 
 let gameOn = false;
+let gameScore = 0;
 let credits = 0;
 let fighterHP = 3;
 let enemyHP = 3;
 let currentBossData = null;
 let currentPlayerData = null;
-let availableStats = ["Força", "Inteligência", "Velocidade", "Altura", "Peso", "Manipulação"];
+let availableStats = ["Raiva", "Inteligência", "Velocidade", "Altura", "Peso", "Manipulação"];
 
 function wall() {
   centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
@@ -116,16 +117,26 @@ function searchFighter() {
     })
     .catch((error) => console.error("Deu erro carai:", error));
 }
-function searchBoss() {
+function searchBoss(lvl) {
   fetch(`http://localhost:3000/data/`)
     .then((response) => response.json())
     .then((json) => {
-      const multiplier = json.boss.length;
-      const randomNumber = Math.floor(Math.random() * multiplier);
-      const bossData = json.boss[randomNumber];
-      showBossInfo(bossData);
+      // const bossLvl = `boss${lvl}`;
+      // const selectedBoss = json[bossLvl];
+      //               /\
+      // const bossLvl = json[`boss${lvl}`];
+      // const randomNumber = Math.floor(Math.random() * json.boss.length);
+
+      const bossKey = lvl ? `boss${lvl}` : "boss";
+      const bossLvl = json[bossKey]
+
+      if (bossLvl && bossLvl.length > 0) {
+        const randomNumber = Math.floor(Math.random() * bossLvl.length);
+        showBossInfo(bossLvl[randomNumber]);
+      } else {
+        console.error(`Nenhum inimigo para o lvl: ${lvl}`);
+      }
     })
-    .catch((error) => console.error("Deu erro carai:", error));
 }
 function showFighterInfo(fighter) {
   const name = fighter.info.name;
@@ -152,7 +163,7 @@ function showBossInfo(boss) {
   const name = boss.info.name;
   const imgSrc = `http://localhost:3000${boss.info.img}`;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
-  const classe = boss.info.classe;
+  // const classe = boss.info.classe;
 
   currentBossData = boss;
   nameDiv2.innerHTML = name;
@@ -194,6 +205,8 @@ function startBattle() {
   gsButton.disabled = false;
   gsButton.style.opacity = 1;
 
+  gameTextDiv.textContent = "Chose a stat to compare!"
+
   const hideStats = document.getElementById("rightDiv");
   const classHunter = hideStats.querySelectorAll(".statValue");
   classHunter.forEach((stat) => {
@@ -212,7 +225,6 @@ function startBattle() {
 }
 function restartBattle() {
   location.reload();
-  gameOn = false;
   fighterHP = 0;
   enemyHP = 0;
 
@@ -290,8 +302,7 @@ function handleClick(event) {
   const statName = event.target.querySelector(".statName").textContent;
   const statValue = statItem.querySelector(".statValue");
   const playerValue = Number(statValue.textContent);
-  
- 
+  // const playerValue = Number(statItem.querySelector(".statValue").textContent);
 
     if (currentBossData && currentBossData.stats) {
       const bossValue = currentBossData.stats[statName];
@@ -304,30 +315,29 @@ function handleClick(event) {
 
         // Stats do inimigo visíveis!
        updateStatsBoss(currentBossData.stats)
+       updateHP()
 
         if (playerValue > bossValue) {
-          console.log(`${statName}: Player wins!`);
-          gameTextDiv.textContent = `${statName}: Player wins!`
+          console.log(`${statName}: Você venceu!`);
+          gameTextDiv.textContent = `Você escolheu ${statName}: Você venceu!`
           availableStats = availableStats.filter(stat => stat !== statName)
-          console.log(availableStats)
           enemyHP -= 1;
           updateHP()
         } else if (playerValue < bossValue) {
-          console.log(`${statName}: Enemy wins!`);
-          gameTextDiv.textContent = `${statName}: Enemy wins!`
+          console.log(`${statName}: Inimigo venceu!`);
+          gameTextDiv.textContent = `Você escolheu ${statName}: ${currentBossData.info.name} venceu!`
           availableStats = availableStats.filter(stat => stat !== statName)
-          console.log(availableStats)
           fighterHP -= 1;
           updateHP()
         } else {
-          console.log(`${statName}: It's a draw!`);
+          console.log(`Você escolheu ${statName}: It's a draw!`);
           gameTextDiv.textContent = `${statName}: It's a draw! :O`
         }
       } else {
-        console.log(`Stat ${statName} not found for Enemy`);
+        console.log(`ERROR: Stat ${statName} not found for Enemy`);
       }
     } else {
-      console.log("Data not found or invalid for the Enemy");
+      console.log("ERROR: Data not found or invalid for the Enemy");
     }
 
     const statItemsAll = document.querySelectorAll(".statItem");
@@ -339,29 +349,28 @@ function handleClick(event) {
         item.style.backgroundColor = "#330a00";
       }
     })
-    
-    
 
-    
-    // setTimeout(gameTextDiv.textContent = "Enemy will play next", enemyTurn, 3000)
-    setTimeout(enemyTurn, 3000)
+    setTimeout(enemyTurn, 1000)
 }
 
 function updateHP() {
   HP = fighterHP
   EHP = enemyHP
 
-
+  console.log("T1", HP, EHP)
   if (HP === 3) {
   } else if (HP === 2) {
     document.getElementById("h3").style.display = "none";
-    gameTextDiv.textContent = `Você ainda tem  2 vidas!`
+    // gameTextDiv.textContent = `Você ainda tem  2 vidas!`
   } else if (HP === 1) {
     document.getElementById("h2").style.display = "none";
-    gameTextDiv.textContent = `Cuidado, você tem apenas 1 vida!`
+    // gameTextDiv.textContent = `Cuidado, você tem apenas 1 vida!`
   } else if (HP === 0) {
     document.getElementById("h1").style.display = "none";
-    gameTextDiv.textContent = `Morreu, otário!`
+    gameTextDiv.textContent = `Morreu, otário! Tente novamente.`
+    gameOn = false;
+    console.log("GAME OVER - RESTART")
+    setTimeout(() => restartBattle, 3000)
   } else {
     console.log("ERRO IF 'HP'")
   }
@@ -374,17 +383,55 @@ function updateHP() {
     document.getElementById("bh2").style.display = "none";
   } else if (EHP ===0) {
     document.getElementById("bh1").style.display = "none";
-    gameTextDiv.textContent = `O inimigo suicidou-se, parabuains!`
+    gameTextDiv.textContent = `O inimigo suicidou-se, parabuains!`;
+    console.log("T5", currentBossData.info.classe)
+    if (currentBossData.info.classe === "chefe") {
+      gameTextDiv.textContent = `Você matou um demônio, brabo!`;
+      rewards();
+    }
+    if (currentBossData.info.classe == "comunista") {
+      setTimeout(preGame3, 3500);
+    } else {
+      setTimeout(preGame2, 3500);
+    }
   } else {
     console.log("ERRO IF 'EHP'")
   }
-  console.log("HP3", HP,EHP)
+  console.log("FINAL", HP,EHP)
+}
+function updateHearts() {
+  HP = fighterHP;
+  EHP = enemyHP;
+
+  if (EHP === 3) {
+    document.getElementById("bh1").style.display = "block";
+    document.getElementById("bh2").style.display = "block";
+    document.getElementById("bh3").style.display = "block";
+  } else if (EHP === 2) {
+    document.getElementById("bh1").style.display = "block";
+    document.getElementById("bh2").style.display = "block";
+  } else if (EHP === 1) {
+    document.getElementById("bh1").style.display = "block";
+  } else {`ERROR: current EHP not found!`};
+
+  if (HP === 3) {
+    document.getElementById("h1").style.display = "block";
+    document.getElementById("h2").style.display = "block";
+    document.getElementById("h3").style.display = "block";
+  } else if (HP === 2) {
+    document.getElementById("h1").style.display = "block";
+    document.getElementById("h2").style.display = "block";
+  } else if (HP === 1) {
+    document.getElementById("h1").style.display = "block";
+  } else {`ERROR: current HP not found!`};
+
 }
 function enemyTurn() {
+  console.log("TT",availableStats)
   const randomStat = Math.floor(Math.random() * availableStats.length);
   const chosenStat = availableStats[randomStat];
 
-  console.log (chosenStat)
+  console.log ("PC:", chosenStat)
 
   availableStats = availableStats.filter(stat => stat !== chosenStat)
 
@@ -395,52 +442,44 @@ function enemyTurn() {
   console.log(`You: ${playerValue}`)
   console.log(`Enemy: ${enemyValue}`)
 
+  if (enemyHP == 0) {
+     setTimeout(()=> gameTextDiv.textContent = "Você ganhou, parabuains!", 1000);
+
+     rfButton.disabled = false;
+     rfButton.style.opacity = 1;
+     fButton.disabled = true;
+     fButton.style.opacity = 0.2;
+     gsButton.disabled = false;
+     gsButton.style.opacity = 1;
+
+      if (currentBossData.info.class === "humano") {
+        return setTimeout(()=> preGame2, 4500)
+      } else {
+        return setTimeout(()=> preGame3, 4500)
+      }
+  }
 
   if (playerValue > enemyValue) {
     console.log(`${chosenStat}: Player wins!`);
-    gameTextDiv.textContent = `${chosenStat}: Player wins!`
+    gameTextDiv.textContent = `Inimigo escolheu ${chosenStat}: Você venceu!`
     availableStats = availableStats.filter(stat => stat !== chosenStat)
-   
     enemyHP -= 1;
     updateHP()
+
   } else if (playerValue < enemyValue) {
     console.log(`${chosenStat}: Enemy wins!`);
-    gameTextDiv.textContent = `${chosenStat}: Enemy wins!`
+    gameTextDiv.textContent = `Inimigo escolheu ${chosenStat}: ${currentBossData.info.name} venceu!!`
     availableStats = availableStats.filter(stat => stat !== chosenStat)
-  
     fighterHP -= 1;
     updateHP()
+
   } else {
-    console.log(`${chosenStat}: It's a draw!`);
+    console.log(`Inimigo escolheu ${chosenStat}: It's a draw!`);
     gameTextDiv.textContent = `${chosenStat}: It's a draw! :O`
   }
-  console.log(chosenStat)
-  updateHP();
 
-  // const hideStats = document.getElementById("rightDiv");
-  // const statItems = hideStats.querySelectorAll(".statItem");
-  // const hideStats2 = document.getElementById("leftDiv");
-  // const statItems2 = hideStats2.querySelectorAll(".statItem");
-
-  // statItems.forEach(statItem => {
-  //   const statName = statItem.querySelector(".statName").textContent;
-  //   if (statName === chosenStat) {
-  //     statItem.classList.remove("clickable");
-  //     statItem.removeEventListener("click", handleClick);
-  //     statItem.style.backgroundColor = "#330a00";
-  //   }
-  //   })
-  
-  //   statItems2.forEach(statItem => {
-  //     const statName2 = statItem.querySelector(".statName").textContent;
-  //     if (statName2 === chosenStat) {
-  //       statItem.classList.remove("clickable");
-  //       statItem.removeEventListener("click", handleClick);
-  //       statItem.style.backgroundColor = "#330a00";
-  //     }
-  // });
-  const statItemsAll = document.querySelectorAll(".statItem");
-    statItemsAll.forEach(item => {
+  const statItem = document.querySelectorAll(".statItem");
+    statItem.forEach(item => {
       const statNameAll = item.querySelector(".statName").textContent;
       if (statNameAll === chosenStat) {
         item.removeEventListener("click", handleClick);
@@ -449,4 +488,96 @@ function enemyTurn() {
       }
     })
 }
+function preGame2 () {
+  setTimeout(() => gameTextDiv.textContent = 'Procurando um comunista para apanhar, prepare-se!', 3000);
+  setTimeout(startBattle2, 5500);
+}
+function startBattle2() {
+  gameTextDiv.textContent = "Game 2 iniciado! Bata nele!"
 
+  availableStats = ["Raiva", "Inteligência", "Velocidade", "Altura", "Peso", "Manipulação"];
+
+  rfButton.disabled = false;
+  rfButton.style.opacity = 1;
+  fButton.disabled = true;
+  fButton.style.opacity = 0.2;
+  gsButton.disabled = false;
+  gsButton.style.opacity = 1;
+
+  const statItemsAll = document.querySelectorAll(".statItem");
+    statItemsAll.forEach(item => {
+        item.addEventListener("click", handleClick);
+        item.classList.remove("clickable");
+        item.style.backgroundColor = "darkred";
+    })
+
+  const hideStats = document.getElementById("rightDiv");
+  const classHunter = hideStats.querySelectorAll(".statValue");
+  classHunter.forEach((stat) => {
+    stat.style.visibility = "hidden";
+  });
+  setTimeout(() => {
+    classHunter.forEach((stat) => {
+      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.style.visibility = "visible";
+    });
+  }, 100);
+
+  enemyHP = 3;
+  fighterHP += 1;
+  updateHearts();
+  updateCredits(credits + 5);
+  searchBoss(2);
+  clicksEnable();
+}
+function preGame3 () {
+  setTimeout(() => gameTextDiv.textContent = 'Procurando um demônio aleatório, prepare-se!', 3000);
+  setTimeout(startBattle3, 5500);
+}
+function startBattle3() {
+  gameTextDiv.textContent = "Game 3 iniciado! Boa sorte, vc vai precisar!"
+
+  availableStats = ["Raiva", "Inteligência", "Velocidade", "Altura", "Peso", "Manipulação"];
+
+  rfButton.disabled = false;
+  rfButton.style.opacity = 1;
+  fButton.disabled = true;
+  fButton.style.opacity = 0.2;
+  gsButton.disabled = false;
+  gsButton.style.opacity = 1;
+
+  const statItemsAll = document.querySelectorAll(".statItem");
+    statItemsAll.forEach(item => {
+        item.addEventListener("click", handleClick);
+        item.classList.remove("clickable");
+        item.style.backgroundColor = "darkred";
+    })
+
+  const hideStats = document.getElementById("rightDiv");
+  const classHunter = hideStats.querySelectorAll(".statValue");
+  classHunter.forEach((stat) => {
+    stat.style.visibility = "hidden";
+  });
+  setTimeout(() => {
+    classHunter.forEach((stat) => {
+      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.style.visibility = "visible";
+    });
+  }, 100);
+
+  enemyHP = 3;
+  fighterHP += 1;
+  updateHearts();
+  updateCredits(credits + 5);
+
+  if (currentBossData.info.class === "chefe" && gameOn == false) {
+    return rewards;
+  }
+
+  searchBoss(3);
+  clicksEnable();
+}
+function rewards() {
+  gameTextDiv.textContent = `REWARDS`;
+  setTimeout(()=>restartBattle,5000);
+}
