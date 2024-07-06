@@ -81,37 +81,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-arena1.addEventListener("click", changeArena1);
-arena2.addEventListener("click", changeArena2);
-arena3.addEventListener("click", changeArena3);
-arena4.addEventListener("click", changeArena4);
-arena5.addEventListener("click", changeArena5);
-arenaD.addEventListener("click", changeArenaD);
+arena1.addEventListener("click",()=> arenaChanger("url(walls/arena1back.jpg)", "url(walls/hell.jpg)"));
+arena2.addEventListener("click",()=> arenaChanger("url(walls/arena2.jpg)", "url(walls/arena2.jpg)"));
+arena3.addEventListener("click", ()=> arenaChanger("url(walls/arena3.jpg)", "url(walls/arena3.jpg)"));
+arena4.addEventListener("click", ()=> arenaChanger("url(walls/heaven.jpg)","url(walls/heaven.jpg)"));
+arena5.addEventListener("click", ()=> arenaChanger("url(walls/arena5.jpg)", "url(walls/arena5.jpg)"));
+arenaD.addEventListener("click", ()=> arenaChanger("url(walls/arenaD.jpg)", "url(walls/arenadback.jpg)"));
 
-function changeArena1() {
-  centerDiv.style.backgroundImage = "url(walls/arena1back.jpg)";
-  document.body.style.backgroundImage = "url(walls/hell.jpg)";
+function arenaChanger(url, urlB) {
+  centerDiv.style.backgroundImage = url;
+  document.body.style.backgroundImage = urlB;
 }
-function changeArena2() {
-  centerDiv.style.backgroundImage = "url(walls/arena2.jpg)";
-  document.body.style.backgroundImage = "url(walls/arena2.jpg)";
-}
-function changeArena3() {
-  centerDiv.style.backgroundImage = "url(walls/arena3.jpg)";
-  document.body.style.backgroundImage = "url(walls/arena3.jpg)";
-}
-function changeArena4() {
-  centerDiv.style.backgroundImage = "url(walls/heaven.jpg)";
-  document.body.style.backgroundImage = "url(walls/heaven.jpg)";
-}
-function changeArena5() {
-  centerDiv.style.backgroundImage = "url(walls/arena5.jpg)";
-  document.body.style.backgroundImage = "url(walls/arena5.jpg)";
-}
-function changeArenaD() {
-  centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
-  document.body.style.backgroundImage = "url(walls/arenadback.jpg)";
-}
+
+// function changeArena1() {
+//   centerDiv.style.backgroundImage = "url(walls/arena1back.jpg)";
+//   document.body.style.backgroundImage = "url(walls/hell.jpg)";
+// }
+// function changeArena2() {
+//   centerDiv.style.backgroundImage = "url(walls/arena2.jpg)";
+//   document.body.style.backgroundImage = "url(walls/arena2.jpg)";
+// }
+// function changeArena3() {
+//   centerDiv.style.backgroundImage = "url(walls/arena3.jpg)";
+//   document.body.style.backgroundImage = "url(walls/arena3.jpg)";
+// }
+// function changeArena4() {
+//   centerDiv.style.backgroundImage = "url(walls/heaven.jpg)";
+//   document.body.style.backgroundImage = "url(walls/heaven.jpg)";
+// }
+// function changeArena5() {
+//   centerDiv.style.backgroundImage = "url(walls/arena5.jpg)";
+//   document.body.style.backgroundImage = "url(walls/arena5.jpg)";
+// }
+// function changeArenaD() {
+//   centerDiv.style.backgroundImage = "url(walls/arenaD.jpg)";
+//   document.body.style.backgroundImage = "url(walls/arenadback.jpg)";
+// }
 function hiddenButton() {
   rbButton.style.display = "block";
 }
@@ -379,7 +384,7 @@ function handleClick(event) {
     }
   });
 
-  updateHP();
+  // updateHP();
   setTimeout(enemyTurn, 1000);
 }
 function updateHP() {
@@ -388,21 +393,19 @@ function updateHP() {
 
   if (HP > 3) {
     HP = 3;
-    console.log("HP adjusted to 3")
+    // console.log("HP adjusted to 3")
   }
   if (EHP > 3) {
     EHP = 3;
-    console.log("EHP adjusted to 3")
+    // console.log("EHP adjusted to 3")
   }
 
-  console.log("T1", HP, EHP);
+  // console.log("T1", HP, EHP);
   if (HP === 3 ) {
   } else if (HP === 2) {
     document.getElementById("h3").style.display = "none";
-    // gameTextDiv.textContent = `Você ainda tem  2 vidas!`
   } else if (HP === 1) {
     document.getElementById("h2").style.display = "none";
-    // gameTextDiv.textContent = `Cuidado, você tem apenas 1 vida!`
   } else if (HP === 0) {
     document.getElementById("h1").style.display = "none";
     gameTextDiv.textContent = `Morreu, otário! Tente novamente.`;
@@ -532,6 +535,8 @@ function enemyTurn() {
   drawCheck();
 }
 function drawCheck() {
+  console.log("DRAW CHECK INICIOU")
+
   if (availableStats.length == 0 && enemyHP > 0 && fighterHP > 0) {
     gameTextDiv.textContent = 'Vocês escolheram encostar os ticos. Ambos perderam!'
     gameOn = false;
@@ -539,19 +544,17 @@ function drawCheck() {
     setTimeout(restartBattle, 5000);
   }
 }
-
 function preGame2() {
   setTimeout(
     () =>
-      (gameTextDiv.textContent =
-        "Procurando um comunista para vc surrar, prepare-se!"),
-    3000
-  );
-  setTimeout(startBattle2, 5500);
+      (gameTextDiv.textContent = "Procurando um comunista para vc surrar, prepare-se!"),3000);
+  setTimeout(() => {
+    startBattle2();
+  }, 5500);
 }
 function startBattle2() {
   gameTextDiv.textContent = "Game 2 iniciado! Bata nele por favor!";
-
+  console.log("START BATTLE 2 INICIOU")
   availableStats = [
     "Raiva",
     "Inteligência",
@@ -591,8 +594,9 @@ function startBattle2() {
   searchBoss(2);
   clicksEnable();
 }
-
 function preGame3() {
+  console.log("PRE GAME 3 INICIOU")
+
   setTimeout(
     () =>
       (gameTextDiv.textContent =
@@ -603,6 +607,7 @@ function preGame3() {
 }
 function startBattle3() {
   gameTextDiv.textContent = "Game 3 iniciado! Boa sorte, vc vai precisar!";
+  console.log("START BATTLE 3 INICIOU")
 
   availableStats = [
     "Raiva",
@@ -671,11 +676,14 @@ function enemyStatsGenerator(boss) {
 
     let sum = r1 + r2 + r3 + r4;
     totalSum += sum;
+ 
     return sum;
   });
-
+  // console.log("TS",totalSum)
+  
   // values.push(Math.floor(Math.random() * 20 + 1) * 0.02)
   // values.push(Math.floor(Math.random() * 6 + 1) * 2)
+
   const [Raiva, Inteligência, Velocidade, Manipulação, alturaRaw, pesoRaw] = values;
   const alturaFinal = parseFloat(alturaRaw * 0.02);
   const pesoFinal = parseFloat(pesoRaw * 2);
@@ -696,6 +704,8 @@ function enemyStatsGenerator(boss) {
   //   Peso: pesoFinal + boss.stats.Peso,
   // };
   // console.log(values,"enhancedBoss:", enhancedBoss)
-  console.log("Values:",values, "TotalSum:", totalSum, "enhancedBoss:", boss.stats)
   // return enhancedBoss;
+
+
+  // console.log("Values:",values, "TotalSum:", totalSum, "enhancedBoss:", boss.stats)
 }
