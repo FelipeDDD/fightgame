@@ -12,6 +12,7 @@ const rbButton = document.getElementById("randomBossButton");
 const fButton = document.getElementById("fightButton");
 const rButton = document.getElementById("restartButton");
 const gsButton = document.getElementById("randomStatsButton");
+const gosButton = document.getElementById("randomOneStatsButton");
 const creditsValue = document.getElementById("credits");
 const nameDiv = document.getElementById("cardNameDiv");
 const nameDiv2 = document.getElementById("cardNameDiv2");
@@ -36,6 +37,7 @@ fButton.addEventListener("click", startBattle);
 rButton.addEventListener("click", restartBattle);
 rfButton.addEventListener("click", searchFighter);
 gsButton.addEventListener("click", generateStats);
+gosButton.addEventListener("click", generateOneStat);
 hButton.addEventListener("click", hiddenButton);
 
 let gameOn = false;
@@ -66,6 +68,7 @@ window.onload = () => {
   wall();
   updateCredits((credits = 0));
   gameOn = false;
+  rbButton.style.display = "none";
 };
 // Remover detalhes antes do Start Battle
 document.addEventListener("DOMContentLoaded", () => {
@@ -159,10 +162,8 @@ function showFighterInfo(fighter) {
 
   if (credits <= 0) {
     rfButton.disabled = true;
-    rfButton.style.opacity = 0.8;
     updateCredits((credits = 0));
     gsButton.disabled = true;
-    gsButton.style.opacity = 0.8;
   }
 }
 function showBossInfo(boss) {
@@ -210,11 +211,8 @@ function startBattle() {
   enemyHP = 3;
 
   rfButton.disabled = false;
-  rfButton.style.opacity = 1;
   fButton.disabled = true;
-  fButton.style.opacity = 0.2;
   gsButton.disabled = false;
-  gsButton.style.opacity = 1;
 
   gameTextDiv.textContent = "Chose a stat to compare!";
 
@@ -241,10 +239,7 @@ function restartBattle() {
   enemyHP = 0;
 
   gsButton.disabled = false;
-  gsButton.style.opacity = 1;
-
   fButton.disabled = false;
-  fButton.style.opacity = 1;
 }
 function updateCredits(newCredits) {
   credits = newCredits;
@@ -258,9 +253,7 @@ function generateStats() {
 
   if (credits <= 0) {
     rfButton.disabled = true;
-    rfButton.style.opacity = 0.8;
     gsButton.disabled = true;
-    gsButton.style.opacity = 0.8;
     updateCredits((credits = 0));
   }
 
@@ -273,19 +266,56 @@ function generateStats() {
 
   if (randomStatIndex == 3) {
     currentPlayerData.stats[randomStat] += increment * 0.02;
-    console.log(`T3 - Incrementando ${randomStat} em ${increment * 0.02}`);
+    console.log(`Incrementando ${randomStat} em ${increment * 0.02}`);
     gameTextDiv.textContent = `${randomStat}: aumentado em ${increment * 0.02}`;
   } else if (randomStatIndex == 4) {
     currentPlayerData.stats[randomStat] += increment * 2;
-    console.log(`T4 Incrementando ${randomStat} em ${increment * 2}`);
+    console.log(`Incrementando ${randomStat} em ${increment * 2}`);
     gameTextDiv.textContent = `${randomStat}: aumentado em ${increment * 2}`;
   } else {
     currentPlayerData.stats[randomStat] += increment;
-    console.log(`T5 Incrementando ${randomStat} em ${increment}`);
+    console.log(`Incrementando ${randomStat} em ${increment}`);
     gameTextDiv.textContent = `${randomStat}: aumentado em ${increment}`;
   }
 
   updateStatsFighter(currentPlayerData.stats);
+}
+function generateOneStat() {
+  function rollDice() {
+    return Math.floor(Math.random() * 51) + 10;
+  }
+
+  updateCredits(credits - 3);
+
+  if (credits <= 0) {
+    rfButton.disabled = true;
+    gsButton.disabled = true;
+    updateCredits((credits = 0));
+  }
+
+  const statNames = Object.keys(currentPlayerData.stats);
+  const randomStatIndex = Math.floor(Math.random() * statNames.length);
+
+  const randomStat = statNames[randomStatIndex];
+
+  const increment = rollDice();
+
+  if (randomStatIndex == 3) {
+    currentPlayerData.stats[randomStat] += increment * 0.02;
+    console.log(`Incrementando ${randomStat} em ${increment * 0.02}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment * 0.02}`;
+  } else if (randomStatIndex == 4) {
+    currentPlayerData.stats[randomStat] += increment * 1.6;
+    console.log(`Incrementando ${randomStat} em ${increment * 1.6}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment * 2}`;
+  } else {
+    currentPlayerData.stats[randomStat] += increment;
+    console.log(`Incrementando ${randomStat} em ${increment}`);
+    gameTextDiv.textContent = `${randomStat}: aumentado em ${increment}`;
+  }
+
+  updateStatsFighter(currentPlayerData.stats);
+  
 }
 function clicksEnable() {
   const hideStats = document.getElementById("leftDiv");
@@ -349,6 +379,7 @@ function handleClick(event) {
     }
   });
 
+  updateHP();
   setTimeout(enemyTurn, 1000);
 }
 function updateHP() {
@@ -461,11 +492,8 @@ function enemyTurn() {
     );
 
     rfButton.disabled = false;
-    rfButton.style.opacity = 1;
     fButton.disabled = true;
-    fButton.style.opacity = 0.2;
     gsButton.disabled = false;
-    gsButton.style.opacity = 1;
 
     if (currentBossData.info.class === "humano") {
       return setTimeout(() => preGame2, 4500);
@@ -508,7 +536,7 @@ function drawCheck() {
     gameTextDiv.textContent = 'Vocês escolheram encostar os ticos. Ambos perderam!'
     gameOn = false;
     console.log("GAME OVER - RESTART");
-    setTimeout(restartBattle, 3000);
+    setTimeout(restartBattle, 5000);
   }
 }
 
@@ -534,11 +562,8 @@ function startBattle2() {
   ];
 
   rfButton.disabled = false;
-  rfButton.style.opacity = 1;
   fButton.disabled = true;
-  fButton.style.opacity = 0.2;
   gsButton.disabled = false;
-  gsButton.style.opacity = 1;
 
   const statItemsAll = document.querySelectorAll(".statItem");
   statItemsAll.forEach((item) => {
@@ -589,11 +614,8 @@ function startBattle3() {
   ];
 
   rfButton.disabled = false;
-  rfButton.style.opacity = 1;
   fButton.disabled = true;
-  fButton.style.opacity = 0.2;
   gsButton.disabled = false;
-  gsButton.style.opacity = 1;
 
   const statItemsAll = document.querySelectorAll(".statItem");
   statItemsAll.forEach((item) => {
@@ -626,10 +648,9 @@ function startBattle3() {
   searchBoss(3);
   clicksEnable();
 }
-
 function rewards() {
   gameTextDiv.textContent = `REWARDS`;
-  setTimeout(() => restartBattle, 5000);
+  setTimeout(restartBattle, 5000);
 }
 function enemyStatsGenerator(boss) {
   const stats = [

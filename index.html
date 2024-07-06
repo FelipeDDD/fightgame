@@ -23,23 +23,40 @@
           </div>
         </div>
         <div class="centerDiv" id="centerDiv">
-          <div class="dropdown">
-            <button class="dropdownButton">Trocar Arena</button>
-            <div class="dropdownContent">
-              <a href="#" id="arena1">Hell</a>
-              <a href="#" id="arena5">Space</a>
-              <a href="#" id="arena4">Heaven</a>
-              <a href="#" id="arena3">Kingdom Streets</a>
-              <a href="#" id="arena2">Fight Ring</a>
-              <a href="#" id="arenaDefault">Fire & Ice</a>
+          <div class="menuDiv">
+            <div>
+              <button id="randomBossButton">Random Enemy</button>
+            </div>
+            <div class="dropdown">
+              <button class="dropdownButton">Change Arena</button>
+              <div class="dropdownContent">
+                <a href="#" id="arena1">Hell</a>
+                <a href="#" id="arena5">Space</a>
+                <a href="#" id="arena4">Heaven</a>
+                <a href="#" id="arena3">Kingdom Streets</a>
+                <a href="#" id="arena2">Fight Ring</a>
+                <a href="#" id="arenaDefault">Fire & Ice</a>
+              </div>
+            </div>
+            <div class="button-container">
+              <div class="creditsDiv">
+                Credits&emsp;= &ensp;
+                <div id="credits">0</div>
+              </div>
+            </div>
+            <div class="button-container">
+              <button id="randomFighterButton">Random Fighter</button>
+              <div class="costButton" id="cb1">Credits: 2</div>
+            </div>
+            <div class="button-container">
+              <button id="randomStatsButton">Random MiniBuff</button>
+              <div class="costButton" id="cb2">Credits: 1</div>
+            </div>
+            <div class="button-container">
+              <button id="randomOneStatsButton">Random Megabuff</button>
+              <div class="costButton" id="cb3">Credits: 3</div>
             </div>
           </div>
-          <button id="randomFighterButton">Random Fighter</button>
-          <div class="creditsDiv">Credits&emsp;= &ensp;
-            <div id="credits">0</div>
-          </div>
-          <button id="randomBossButton">Random Enemy</button>
-          <button id="randomStatsButton">Generate Stats</button>
           <div class="ring">
             <div id="leftDiv" class="playDiv">
               <div id="cardDiv">
@@ -80,7 +97,7 @@
             <div class="middleDiv">
               <button id="fightButton">Start Battle</button>
               <button id="restartButton">Restart</button>
-              <div id="gameTextDiv"> Waiting for game start.</div>
+              <div id="gameTextDiv">Waiting for game start.</div>
             </div>
             <div id="rightDiv" class="playDiv">
               <div id="cardDiv">
