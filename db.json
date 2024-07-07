@@ -4,7 +4,7 @@
         {
           "info": {
             "name": "Anão Pegador de Casada",
-            "img": "public/images/anoes/anao1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao1.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -19,7 +19,7 @@
         {
           "info": {
             "name": "Anão Çedutor",
-            "img": "public/images/anoes/anao2.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao2.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -34,7 +34,7 @@
         {
           "info": {
             "name": "Menino Koguinhos",
-            "img": "public/images/anoes/anao3.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao3.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -49,7 +49,7 @@
         {
           "info": {
             "name": "Anão Moura",
-            "img": "public/images/anoes/anao4.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao4.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -64,7 +64,7 @@
         {
           "info": {
             "name": "Street Moura",
-            "img": "public/images/anoes/anao5.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao5.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -79,7 +79,7 @@
         {
           "info": {
             "name": "Cariani lv.1",
-            "img": "public/images/anoes/anao6.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao6.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -94,7 +94,7 @@
         {
           "info": {
             "name": "Anão Faria Limer",
-            "img": "public/images/anoes/anao7.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao7.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -109,7 +109,7 @@
         {
           "info": {
             "name": "Anão Sandler",
-            "img": "public/images/anoes/anao8.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao8.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -124,7 +124,7 @@
         {
           "info": {
             "name": "Mestre do Capitonanismo",
-            "img": "public/images/anoes/anao9.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao9.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -139,7 +139,7 @@
         {
           "info": {
             "name": "Bolsonanico",
-            "img": "public/images/anoes/anao10.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao10.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -154,7 +154,7 @@
         {
           "info": {
             "name": "Mourinha no corte",
-            "img": "public/images/anoes/anao11.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao11.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -169,7 +169,7 @@
         {
           "info": {
             "name": "Dwarf Joker",
-            "img": "public/images/anoes/anao12.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao12.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -184,7 +184,7 @@
         {
           "info": {
             "name": "Messinho",
-            "img": "public/images/anoes/anao13.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao13.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -199,7 +199,7 @@
         {
           "info": {
             "name": "Igor 1.5k",
-            "img": "public/images/anoes/anao14.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao14.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -214,7 +214,7 @@
         {
           "info": {
             "name": "Anão da F1",
-            "img": "public/images/anoes/anao15.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao15.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -229,7 +229,7 @@
         {
           "info": {
             "name": "Montador de Bolsonaro",
-            "img": "public/images/anoes/anao16.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao16.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -244,7 +244,7 @@
         {
           "info": {
             "name": "Messinho Atacante",
-            "img": "public/images/anoes/anao17.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao17.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -259,7 +259,7 @@
         {
           "info": {
             "name": "Tyrion Gunnister",
-            "img": "public/images/anoes/anao18.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao18.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -274,7 +274,7 @@
         {
           "info": {
             "name": "Dwarf Trump",
-            "img": "public/images/anoes/anao19.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao19.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -289,7 +289,7 @@
         {
           "info": {
             "name": "Faustinho Silva",
-            "img": "public/images/anoes/anao20.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/anoes/anao20.jpg",
             "classe": "anao"
           },
           "stats": {
@@ -313,7 +313,7 @@
         {
           "info": {
             "name": "Lula Maromba",
-            "img": "public/images/maromba4.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/maromba4.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -328,7 +328,7 @@
         {
           "info": {
             "name": "Xandão Fibonnaci",
-            "img": "public/images/xandao1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/xandao1.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -343,7 +343,7 @@
         {
           "info": {
             "name": "Cirão Gomes",
-            "img": "public/images/ciro1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/ciro1.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -358,7 +358,7 @@
         {
           "info": {
             "name": "Preta Thunberg",
-            "img": "public/images/greta1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/greta1.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -373,7 +373,7 @@
         {
           "info": {
             "name": "Dom Preso I",
-            "img": "public/images/lula2.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/lula2.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -388,7 +388,7 @@
         {
           "info": {
             "name": "Vladimir Raspretin",
-            "img": "public/images/putin1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/putin1.jpg",
             "classe": "humano"
           },
           "stats": {
@@ -409,7 +409,7 @@
         {
           "info": {
             "name": "Ian Neves",
-            "img": "public/images/comunas/comuna1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/comunas/comuna1.jpg",
             "classe": "comunista"
           },
           "stats": {
@@ -424,7 +424,7 @@
         {
           "info": {
             "name": "Jumberto Matos",
-            "img": "public/images/comunas/comuna2.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/comunas/comuna2.jpg",
             "classe": "comunista"
           },
           "stats": {
@@ -439,7 +439,7 @@
         {
           "info": {
             "name": "Meteoro Bostil",
-            "img": "public/images/comunas/comuna3.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/comunas/comuna3.jpg",
             "classe": "comunista"
           },
           "stats": {
@@ -454,7 +454,7 @@
         {
           "info": {
             "name": "Flávio Dino",
-            "img": "public/images/comunas/comuna4.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/comunas/comuna4.jpg",
             "classe": "comunista"
           },
           "stats": {
@@ -469,7 +469,7 @@
         {
           "info": {
             "name": "Cauê Moura",
-            "img": "public/images/comunas/comuna5.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/comunas/comuna5.jpg",
             "classe": "comunista"
           },
           "stats": {
@@ -490,7 +490,7 @@
         {
           "info": {
             "name": "Evil Lula",
-            "img": "public/images/lula.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/lula.jpg",
             "classe": "chefe"
           },
           "stats": {
@@ -505,7 +505,7 @@
         {
           "info": {
             "name": "Xandão, the Dark Knight",
-            "img": "public/images/xandao2.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/xandao2.jpg",
             "classe": "chefe"
           },
           "stats": {
@@ -520,7 +520,7 @@
         {
           "info": {
             "name": "Diabolic Dilma",
-            "img": "public/images/dilma1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/dilma1.jpg",
             "classe": "chefe"
           },
           "stats": {
@@ -535,7 +535,7 @@
         {
           "info": {
             "name": "Dark Brandon",
-            "img": "public/images/biden1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/biden1.jpg",
             "classe": "chefe"
           },
           "stats": {
@@ -550,7 +550,7 @@
         {
           "info": {
             "name": "Evil Obama",
-            "img": "public/images/obama1.jpg",
+            "img": "https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/images/obama1.jpg",
             "classe": "chefe"
           },
           "stats": {
