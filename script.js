@@ -128,7 +128,6 @@ function searchFighter() {
       const multiplier = json.players.length;
       const randomNumber = Math.floor(Math.random() * multiplier);
       const fighterData = json.players[randomNumber];
-      // Ordena os stats para o sugerido
 
       showFighterInfo(fighterData);
     })

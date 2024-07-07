@@ -1,0 +1,568 @@
+{
+    "data": {
+      "players": [
+        {
+          "info": {
+            "name": "Anão Pegador de Casada",
+            "img": "/images/anoes/anao1.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 75,
+            "Inteligência": 80,
+            "Velocidade": 70,
+            "Altura": 1.80,
+            "Peso": 75,
+            "Manipulação": 65
+          }
+        },
+        {
+          "info": {
+            "name": "Anão Çedutor",
+            "img": "/images/anoes/anao2.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 85,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.75,
+            "Peso": 70,
+            "Manipulação": 60
+          }
+        },
+        {
+          "info": {
+            "name": "Menino Koguinhos",
+            "img": "/images/anoes/anao3.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 70,
+            "Inteligência": 90,
+            "Velocidade": 65,
+            "Altura": 1.70,
+            "Peso": 65,
+            "Manipulação": 85
+          }
+        },
+        {
+          "info": {
+            "name": "Anão Moura",
+            "img": "/images/anoes/anao4.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 75,
+            "Velocidade": 85,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Street Moura",
+            "img": "/images/anoes/anao5.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 90,
+            "Inteligência": 65,
+            "Velocidade": 75,
+            "Altura": 1.90,
+            "Peso": 85,
+            "Manipulação": 55
+          }
+        },
+        {
+          "info": {
+            "name": "Cariani lv.1",
+            "img": "/images/anoes/anao6.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 65,
+            "Inteligência": 85,
+            "Velocidade": 80,
+            "Altura": 1.65,
+            "Peso": 60,
+            "Manipulação": 90
+          }
+        },
+        {
+          "info": {
+            "name": "Anão Faria Limer",
+            "img": "/images/anoes/anao7.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 75,
+            "Inteligência": 80,
+            "Velocidade": 70,
+            "Altura": 1.75,
+            "Peso": 70,
+            "Manipulação": 75
+          }
+        },
+        {
+          "info": {
+            "name": "Anão Sandler",
+            "img": "/images/anoes/anao8.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 85,
+            "Inteligência": 75,
+            "Velocidade": 85,
+            "Altura": 1.80,
+            "Peso": 75,
+            "Manipulação": 65
+          }
+        },
+        {
+          "info": {
+            "name": "Mestre do Capitonanismo",
+            "img": "/images/anoes/anao9.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 70,
+            "Inteligência": 90,
+            "Velocidade": 75,
+            "Altura": 1.70,
+            "Peso": 65,
+            "Manipulação": 80
+          }
+        },
+        {
+          "info": {
+            "name": "Bolsonanico",
+            "img": "/images/anoes/anao10.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Mourinha no corte",
+            "img": "/images/anoes/anao11.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Dwarf Joker",
+            "img": "/images/anoes/anao12.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Messinho",
+            "img": "/images/anoes/anao13.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Igor 1.5k",
+            "img": "/images/anoes/anao14.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Anão da F1",
+            "img": "/images/anoes/anao15.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Montador de Bolsonaro",
+            "img": "/images/anoes/anao16.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Messinho Atacante",
+            "img": "/images/anoes/anao17.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Tyrion Gunnister",
+            "img": "/images/anoes/anao18.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Dwarf Trump",
+            "img": "/images/anoes/anao19.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        },
+        {
+          "info": {
+            "name": "Faustinho Silva",
+            "img": "/images/anoes/anao20.jpg",
+            "classe": "anao"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 70,
+            "Velocidade": 90,
+            "Altura": 1.85,
+            "Peso": 80,
+            "Manipulação": 70
+          }
+        }
+      ],
+
+
+
+
+
+
+
+      "boss": [
+        {
+          "info": {
+            "name": "Lula Maromba",
+            "img": "/images/maromba4.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 100,
+            "Inteligência": 85,
+            "Velocidade": 90,
+            "Altura": 2.10,
+            "Peso": 110,
+            "Manipulação": 90
+          }
+        },
+        {
+          "info": {
+            "name": "Xandão Fibonnaci",
+            "img": "/images/xandao1.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 90,
+            "Inteligência": 100,
+            "Velocidade": 80,
+            "Altura": 1.90,
+            "Peso": 95,
+            "Manipulação": 100
+          }
+        },
+        {
+          "info": {
+            "name": "Cirão Gomes",
+            "img": "/images/ciro1.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 85,
+            "Inteligência": 105,
+            "Velocidade": 90,
+            "Altura": 1.95,
+            "Peso": 90,
+            "Manipulação": 105
+          }
+        },
+        {
+          "info": {
+            "name": "Preta Thunberg",
+            "img": "/images/greta1.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 100,
+            "Inteligência": 90,
+            "Velocidade": 95,
+            "Altura": 2.00,
+            "Peso": 100,
+            "Manipulação": 100
+          }
+        },
+        {
+          "info": {
+            "name": "Dom Preso I",
+            "img": "/images/lula2.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 105,
+            "Inteligência": 55,
+            "Velocidade": 95,
+            "Altura": 1.70,
+            "Peso": 130,
+            "Manipulação": 145
+          }
+        },
+        {
+          "info": {
+            "name": "Vladimir Raspretin",
+            "img": "/images/putin1.jpg",
+            "classe": "humano"
+          },
+          "stats": {
+            "Raiva": 80,
+            "Inteligência": 85,
+            "Velocidade": 120,
+            "Altura": 2.20,
+            "Peso": 120,
+            "Manipulação": 85
+          }
+        }
+      ],
+
+
+
+
+      "boss2": [
+        {
+          "info": {
+            "name": "Ian Neves",
+            "img": "/images/comunas/comuna1.jpg",
+            "classe": "comunista"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 90,
+            "Velocidade": 85,
+            "Altura": 2.00,
+            "Peso": 100,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Jumberto Matos",
+            "img": "/images/comunas/comuna2.jpg",
+            "classe": "comunista"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 95,
+            "Velocidade": 95,
+            "Altura": 2.05,
+            "Peso": 105,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Meteoro Bostil",
+            "img": "/images/comunas/comuna3.jpg",
+            "classe": "comunista"
+          },
+          "stats": {
+            "Raiva": 105,
+            "Inteligência": 80,
+            "Velocidade": 100,
+            "Altura": 2.15,
+            "Peso": 115,
+            "Manipulação": 85
+          }
+        },
+        {
+          "info": {
+            "name": "Flávio Dino",
+            "img": "/images/comunas/comuna4.jpg",
+            "classe": "comunista"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 100,
+            "Velocidade": 85,
+            "Altura": 2.05,
+            "Peso": 105,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Cauê Moura",
+            "img": "/images/comunas/comuna5.jpg",
+            "classe": "comunista"
+          },
+          "stats": {
+            "Raiva": 90,
+            "Inteligência": 95,
+            "Velocidade": 100,
+            "Altura": 2.10,
+            "Peso": 110,
+            "Manipulação": 90
+          }
+        }
+      ],
+
+
+
+
+    "boss3": [
+        {
+          "info": {
+            "name": "Evil Lula",
+            "img": "/images/lula.jpg",
+            "classe": "chefe"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 90,
+            "Velocidade": 85,
+            "Altura": 2.00,
+            "Peso": 100,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Xandão, the Dark Knight",
+            "img": "/images/xandao2.jpg",
+            "classe": "chefe"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 95,
+            "Velocidade": 95,
+            "Altura": 2.05,
+            "Peso": 105,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Diabolic Dilma",
+            "img": "/images/dilma1.jpg",
+            "classe": "chefe"
+          },
+          "stats": {
+            "Raiva": 105,
+            "Inteligência": 80,
+            "Velocidade": 100,
+            "Altura": 2.15,
+            "Peso": 115,
+            "Manipulação": 85
+          }
+        },
+        {
+          "info": {
+            "name": "Dark Brandon",
+            "img": "/images/biden1.jpg",
+            "classe": "chefe"
+          },
+          "stats": {
+            "Raiva": 95,
+            "Inteligência": 100,
+            "Velocidade": 85,
+            "Altura": 2.05,
+            "Peso": 105,
+            "Manipulação": 95
+          }
+        },
+        {
+          "info": {
+            "name": "Evil Obama",
+            "img": "/images/obama1.jpg",
+            "classe": "chefe"
+          },
+          "stats": {
+            "Raiva": 90,
+            "Inteligência": 95,
+            "Velocidade": 100,
+            "Altura": 2.10,
+            "Peso": 110,
+            "Manipulação": 90
+          }
+        }
+      ]
+  }
+}
+  
