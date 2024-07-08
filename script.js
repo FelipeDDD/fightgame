@@ -126,9 +126,9 @@ function searchFighter() {
   fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
     .then((response) => response.json())
     .then((json) => {
-      const multiplier = json.players.length;
+      const multiplier = json.data.players.length;
       const randomNumber = Math.floor(Math.random() * multiplier);
-      const fighterData = json.players[randomNumber];
+      const fighterData = json.data.players[randomNumber];
 
       showFighterInfo(fighterData);
     })
@@ -145,7 +145,7 @@ function searchBoss(lvl) {
       // const bossLvl = json[`boss${lvl}`];
 
       const bossKey = lvl ? `boss${lvl}` : "boss";
-      const bossLvl = json[bossKey];
+      const bossLvl = json.data[bossKey];
 
       if (bossLvl && bossLvl.length > 0) {
         const randomNumber = Math.floor(Math.random() * bossLvl.length);
