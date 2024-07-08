@@ -57,8 +57,8 @@ let availableStats = [
 ];
 
 function wall() {
-  centerDiv.style.backgroundImage = "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arenaD.jpg)";
-  document.body.style.backgroundImage = "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arenaDback.jpg)";
+  centerDiv.style.backgroundImage = "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arenaD.jpg)";
+  document.body.style.backgroundImage = "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arenaDback.jpg)";
   document.body.style.backgroundColor = "rgba(255, 255, 255, 0";
   document.body.style.backgroundBlrestartMode = "overlay";
   document.body.style.backgroundSize = "cover";
@@ -77,16 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
     statItem.classList.remove("clickable");
     statItem.querySelector(
       ".statValue"
-    ).innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+    ).innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
   });
 });
 
-arena1.addEventListener("click",()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena1back.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/hell.jpg)"));
-arena2.addEventListener("click",()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena2.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena2.jpg)"));
-arena3.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena3.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena3.jpg)"));
-arena4.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/heaven.jpg)","url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/heaven.jpg)"));
-arena5.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena5.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arena5.jpg)"));
-arenaD.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arenaD.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/arenaDback.jpg)"));
+arena1.addEventListener("click",()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena1back.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/hell.jpg)"));
+arena2.addEventListener("click",()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena2.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena2.jpg)"));
+arena3.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena3.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena3.jpg)"));
+arena4.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/heaven.jpg)","url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/heaven.jpg)"));
+arena5.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena5.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arena5.jpg)"));
+arenaD.addEventListener("click", ()=> arenaChanger("url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arenaD.jpg)", "url(https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/walls/arenaDback.jpg)"));
 
 function arenaChanger(url, urlB) {
   centerDiv.style.backgroundImage = url;
@@ -123,7 +123,7 @@ function hiddenButton() {
 
 function searchFighter() {
   // fetch(`http://localhost:3000/data/`)
-  fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
+  fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/db.json`)
     .then((response) => response.json())
     .then((json) => {
       const multiplier = json.data.players.length;
@@ -136,7 +136,7 @@ function searchFighter() {
 }
 function searchBoss(lvl) {
   // fetch(`http://localhost:3000/data/`)
-    fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
+    fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/db.json`)
     .then((response) => response.json())
     .then((json) => {
       // const bossLvl = `boss${lvl}`;
@@ -229,7 +229,7 @@ function startBattle() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/public/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
@@ -583,7 +583,7 @@ function startBattle2() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/public/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
@@ -637,7 +637,7 @@ function startBattle3() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/public/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
