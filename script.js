@@ -229,7 +229,7 @@ function startBattle() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
@@ -562,7 +562,7 @@ function startBattle2() {
     "Velocidade",
     "Altura",
     "Peso",
-    "Manipulação",
+    "Manipulação"
   ];
 
   rfButton.disabled = false;
@@ -583,7 +583,7 @@ function startBattle2() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/cross1.jpg/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
@@ -637,7 +637,7 @@ function startBattle3() {
   });
   setTimeout(() => {
     classHunter.forEach((stat) => {
-      stat.innerHTML = `<img src="walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
+      stat.innerHTML = `<img src="https://raw.githubusercontent.com/FelipeDDD/fightgame/main/walls/question-mark.png" class="pulsing-img" style="width: 23px; height:15px;"/>`;
       stat.style.visibility = "visible";
     });
   }, 100);
