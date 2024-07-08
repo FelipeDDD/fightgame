@@ -122,7 +122,7 @@ function hiddenButton() {
 }
 
 function searchFighter() {
-  fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/db.json`)
+  fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
     .then((response) => response.json())
     .then((json) => {
       const multiplier = json.data.players.length;
@@ -134,7 +134,7 @@ function searchFighter() {
     .catch((error) => console.error("Deu erro carai:", error));
 }
 function searchBoss(lvl) {
-    fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/public/db.json`)
+    fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
     .then((response) => response.json())
     .then((json) => {
       // const bossLvl = `boss${lvl}`;
