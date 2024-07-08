@@ -122,7 +122,6 @@ function hiddenButton() {
 }
 
 function searchFighter() {
-  // fetch(`http://localhost:3000/data/`)
   fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
     .then((response) => response.json())
     .then((json) => {
@@ -135,7 +134,6 @@ function searchFighter() {
     .catch((error) => console.error("Deu erro carai:", error));
 }
 function searchBoss(lvl) {
-  // fetch(`http://localhost:3000/data/`)
     fetch(`https://raw.githubusercontent.com/FelipeDDD/fightgame/main/db.json`)
     .then((response) => response.json())
     .then((json) => {
@@ -157,7 +155,7 @@ function searchBoss(lvl) {
 }
 function showFighterInfo(fighter) {
   const name = fighter.info.name;
-  const imgSrc = `http://localhost:3000${fighter.info.img}`;
+  const imgSrc = fighter.info.img;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
 
   nameDiv.innerHTML = name;
@@ -174,9 +172,8 @@ function showFighterInfo(fighter) {
 }
 function showBossInfo(boss) {
   const name = boss.info.name;
-  const imgSrc = `http://localhost:3000${boss.info.img}`;
+  const imgSrc = boss.info.img;
   const img = `<img src="${imgSrc}" alt="${name}"/>`;
-  // const classe = boss.info.classe;
 
   if (boss.info.classe === "humano") {
   } else if (boss.info.classe === "comunista") {
