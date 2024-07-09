@@ -1,13 +1,12 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "public/images/*", "use": "@vercel/static" },
-    { "src": "public/walls/*", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static-build" },
+    { "src": "public/**/*", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/public/images/(.*)", "dest": "/public/images/$1" },
-    { "src": "/public/walls/(.*)", "dest": "/public/walls/$1" }
+    { "src": "/(.*\\.(json|xml))", "dest": "/$1" },
+    { "src": "/images/(.*)", "dest": "/public/images/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
