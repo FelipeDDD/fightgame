@@ -168,6 +168,7 @@ function showFighterInfo(fighter) {
     rfButton.disabled = true;
     updateCredits((credits = 0));
     gsButton.disabled = true;
+    gosButton.disabled = true;
   }
 }
 function showBossInfo(boss) {
@@ -216,6 +217,7 @@ function startBattle() {
   rfButton.disabled = false;
   fButton.disabled = true;
   gsButton.disabled = false;
+  gosButton.disabled = false;
 
   gameTextDiv.textContent = "Chose a stat to compare!";
 
@@ -242,6 +244,7 @@ function restartBattle() {
   enemyHP = 0;
 
   gsButton.disabled = false;
+  gosButton.disabled = false;
   fButton.disabled = false;
 }
 function updateCredits(newCredits) {
@@ -257,6 +260,7 @@ function generateStats() {
   if (credits <= 0) {
     rfButton.disabled = true;
     gsButton.disabled = true;
+    gosButton.disabled = true;
     updateCredits((credits = 0));
   }
 
@@ -293,6 +297,7 @@ function generateOneStat() {
   if (credits <= 0) {
     rfButton.disabled = true;
     gsButton.disabled = true;
+    gosButton.disabled = true;
     updateCredits((credits = 0));
   }
 
@@ -364,6 +369,7 @@ function handleClick(event) {
       } else {
         console.log(`Você escolheu ${statName}: It's a draw!`);
         gameTextDiv.textContent = `${statName}: It's a draw! :O`;
+        updateHP();
       }
     } else {
       console.log(`ERROR: Stat ${statName} not found for Enemy`);
@@ -383,7 +389,7 @@ function handleClick(event) {
   });
 
   // updateHP();
-  setTimeout(enemyTurn, 1000);
+  setTimeout(enemyTurn, 1500);
 }
 function updateHP() {
   HP = fighterHP;
@@ -398,7 +404,6 @@ function updateHP() {
     // console.log("EHP adjusted to 3")
   }
 
-  // console.log("T1", HP, EHP);
   if (HP === 3 ) {
   } else if (HP === 2) {
     document.getElementById("h3").style.display = "none";
@@ -434,7 +439,7 @@ function updateHP() {
   } else {
     console.log("ERROR: IF 'EHP'");
   }
-  console.log("FINAL", HP, EHP);
+  console.log("FINAL HP", HP, EHP);
 }
 function updateHearts() {
   HP = fighterHP;
@@ -468,14 +473,10 @@ function updateHearts() {
 }
 function enemyTurn() {
 
- 
-
   console.log("TT", availableStats);
   drawCheck();
   const randomStat = Math.floor(Math.random() * availableStats.length);
   const chosenStat = availableStats[randomStat];
-
-  console.log("PC:", chosenStat);
 
   availableStats = availableStats.filter((stat) => stat !== chosenStat);
 
@@ -486,7 +487,7 @@ function enemyTurn() {
   console.log(`You: ${playerValue}`);
   console.log(`Enemy: ${enemyValue}`);
 
-  if (enemyHP == 0) {
+  if (enemyHP === 0) {
     setTimeout(
       () => (gameTextDiv.textContent = "Você ganhou, parabuains!"),
       1000
@@ -495,6 +496,7 @@ function enemyTurn() {
     rfButton.disabled = false;
     fButton.disabled = true;
     gsButton.disabled = false;
+    gosButton.disabled = false;
 
     if (currentBossData.info.class === "humano") {
       return setTimeout(() => preGame2, 4500);
@@ -565,6 +567,7 @@ function startBattle2() {
   rfButton.disabled = false;
   fButton.disabled = true;
   gsButton.disabled = false;
+  gosButton.disabled = false;
 
   const statItemsAll = document.querySelectorAll(".statItem");
   statItemsAll.forEach((item) => {
@@ -619,6 +622,7 @@ function startBattle3() {
   rfButton.disabled = false;
   fButton.disabled = true;
   gsButton.disabled = false;
+  gosButton.disabled = false;
 
   const statItemsAll = document.querySelectorAll(".statItem");
   statItemsAll.forEach((item) => {
@@ -643,13 +647,12 @@ function startBattle3() {
   fighterHP += 1;
   updateHearts();
   updateCredits(credits + 5);
+  searchBoss(3);
+  clicksEnable();
 
   if (currentBossData.info.class === "chefe" && gameOn == false) {
     return rewards;
   }
-
-  searchBoss(3);
-  clicksEnable();
 }
 function rewards() {
   gameTextDiv.textContent = `REWARDS`;
